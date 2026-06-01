@@ -1,0 +1,49 @@
+name: Deploy alavitra-akaiky
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Build and push frontend (Next.js)
+        run: |
+          docker build -t ghcr.io/wikolabs/alavitra-akaiky:latest .
+          docker push ghcr.io/wikolabs/alavitra-akaiky:latest
+
+      - name: Build and push backend (FastAPI)
+        run: |
+          docker build -t ghcr.io/wikolabs/alavitra-akaiky-backend:latest ./backend
+          docker push ghcr.io/wikolabs/alavitra-akaiky-backend:latest
+
+      - name: Deploy to VM via SSH + docker-compose
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.WIKOLABS_VM_SSH_KEY }}
+          VM_HOST: ${{ secrets.WIKOLABS_VM_HOST }}
+          VM_USER: ${{ secrets.WIKOLABS_VM_USER }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHCR_USER: ${{ github.actor }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$VM_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # Ensure target dir exists on VM
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "$VM_USER@$VM_HOST" "mkdir -p ~/wk/alavitra-akaiky"
+          # Ship the compose file
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no docker-compose.yml "$VM_USER@$VM_HOST:~/wk/alavitra-akaiky/docker-compose.yml"
+          # Login to GHCR on VM, stop any legacy single container, pull new images, bring stack up
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "$VM_USER@$VM_HOST" "cd ~/wk/alavitra-akaiky && echo '$GHCR_TOKEN' | docker login ghcr.io -u '$GHCR_USER' --password-stdin && (docker stop alavitra-akaiky alavitra-akaiky-backend 2>/dev/null; docker rm alavitra-akaiky alavitra-akaiky-backend 2>/dev/null; true) && GROQ_API_KEY='$GROQ_API_KEY' GEMINI_API_KEY='$GEMINI_API_KEY' docker compose pull && GROQ_API_KEY='$GROQ_API_KEY' GEMINI_API_KEY='$GEMINI_API_KEY' docker compose up -d && echo 'Deployed alavitra-akaiky stack (frontend on 3033, backend internal)'"

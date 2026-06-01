@@ -1,0 +1,37 @@
+version: "3.9"
+
+# alavitra-akaiky demo - production-ready POC.
+# 2 services orchestrated:
+#   - alavitra-akaiky (Next.js frontend on host port 3033)
+#   - alavitra-akaiky-backend (FastAPI Python, internal only on 8000)
+# Shared external network wkdemo-net (created once by deploy.yml) avoids
+# Docker default address-pool exhaustion across all 47 LP stacks.
+
+services:
+  alavitra-akaiky-backend:
+    image: ghcr.io/wikolabs/alavitra-akaiky-backend:latest
+    container_name: alavitra-akaiky-backend
+    restart: unless-stopped
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    networks:
+      - wkdemo_net
+
+  alavitra-akaiky:
+    image: ghcr.io/wikolabs/alavitra-akaiky:latest
+    container_name: alavitra-akaiky
+    restart: unless-stopped
+    ports:
+      - "3033:3000"
+    environment:
+      BACKEND_URL: "http://alavitra-akaiky-backend:8000"
+    depends_on:
+      - alavitra-akaiky-backend
+    networks:
+      - wkdemo_net
+
+networks:
+  wkdemo_net:
+    name: wkdemo-net
+    external: true
