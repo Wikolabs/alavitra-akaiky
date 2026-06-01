@@ -4,6 +4,12 @@ import { useState } from "react";
 const P = {
   name: "AlavitraAkaiky",
   waPhone: "261386626100",
+  tools: [
+    { name: "WebRTC", slug: "webrtc" },
+    { name: "Calendly", slug: "calendly" },
+    { name: "Stripe", slug: "stripe" },
+    { name: "Groq", slug: "groq" },
+  ],
   palette: {
     mode: "dark" as "dark" | "light",
     bg: "#0F1428",
@@ -243,6 +249,20 @@ export default function Page() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* TOOLS INTEGRATED */}
+      <section id="tools" className="wk-section" style={{ padding:"80px 40px", maxWidth:1100, margin:"0 auto" }}>
+        <SectionHead pal={pal} tag={lang==="fr"?"Outils integres":"Tools we operate"} title={lang==="fr"?"On opere <em>votre stack</em>, vous n'avez rien a apprendre":"We operate <em>your stack</em>, you don't have to learn it"} />
+        <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center", gap:12 }}>
+          {P.tools.map(tool => (
+            <div key={tool.slug} style={{ display:"inline-flex", alignItems:"center", gap:8, padding:"10px 16px", background:pal.surface, border:`1px solid ${pal.border}`, borderRadius:100, fontSize:13, color:pal.txt1, fontWeight:600 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`https://cdn.simpleicons.org/${tool.slug}/${pal.accent.replace('#','')}`} alt={tool.name} width={18} height={18} style={{ flexShrink:0 }} />
+              <span>{tool.name}</span>
+            </div>
+          ))}
         </div>
       </section>
 
