@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -24,7 +24,7 @@ const C = {
 const SERIF = `"Cormorant Garamond", Georgia, serif`;
 const DISPLAY = `"Cinzel", "Cormorant Garamond", Georgia, serif`;
 
-// ─── Bible verses (FR) — curated for emotional resonance ───────────────────────
+// ─── Bible verses (FR) · curated for emotional resonance ───────────────────────
 const VERSES = [
   {
     ref: "Jérémie 29:11",
@@ -75,10 +75,10 @@ const MISSIONS = [
 
 const PASTORS = [
   { name: "Pasteur Daniel Solanà", title: "Sermons sur la Paix Intérieure", desc: "Voix douce et profonde, méditations sur le repos en Christ et l'abandon des fardeaux.", color: C.royal },
-  { name: "Pasteure Marie-Esther", title: "Ministère pour les Mères", desc: "Enseignements pour les femmes et les jeunes mamans — courage, douceur, persévérance.", color: C.goldBright },
+  { name: "Pasteure Marie-Esther", title: "Ministère pour les Mères", desc: "Enseignements pour les femmes et les jeunes mamans · courage, douceur, persévérance.", color: C.goldBright },
   { name: "Pasteur Joseph Bénédict", title: "Études Bibliques Approfondies", desc: "Exégèse rigoureuse des Écritures, livre par livre, pour ceux qui cherchent à grandir.", color: C.deep },
   { name: "Pasteur Samuel Eden", title: "Prière et Guérison", desc: "Sessions de prière collective et témoignages de restauration physique et spirituelle.", color: "#0E7490" },
-  { name: "Pasteure Hannah Lumière", title: "Femmes en Christ", desc: "Identité, vocation et appel — pour les femmes qui veulent vivre pleinement leur foi.", color: "#9333EA" },
+  { name: "Pasteure Hannah Lumière", title: "Femmes en Christ", desc: "Identité, vocation et appel · pour les femmes qui veulent vivre pleinement leur foi.", color: "#9333EA" },
   { name: "Pasteur Élisée Mbongo", title: "Évangélisation Francophone", desc: "Messages percutants pour partager l'Évangile en français, en Afrique et en diaspora.", color: "#DC2626" },
 ];
 
@@ -225,7 +225,7 @@ export default function Home() {
             <em style={{ fontFamily: SERIF, fontStyle: "italic", background: `linear-gradient(90deg, ${C.goldBright} 0%, ${C.royal} 100%)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontWeight: 600 }}>Recevez la Lumière.</em>
           </h1>
           <p style={{ fontFamily: SERIF, fontSize: "1.3rem", lineHeight: 1.55, color: C.textMuted, maxWidth: 640, margin: "0 auto 36px", fontStyle: "italic" }}>
-            Un conseiller biblique IA et une église en ligne — disponibles 24h/24, partout. Dialoguez avec un compagnon formé sur les Écritures Saintes, écoutez les messages de la communauté, et recevez la grâce qui ne dort jamais.
+            Un conseiller biblique IA et une église en ligne · disponibles 24h/24, partout. Dialoguez avec un compagnon formé sur les Écritures Saintes, écoutez les messages de la communauté, et recevez la grâce qui ne dort jamais.
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 56 }}>
             <button onClick={() => setChatOpen(true)} style={{ background: `linear-gradient(135deg, ${C.goldBright} 0%, ${C.gold} 100%)`, color: "#fff", border: "none", padding: "16px 32px", borderRadius: 100, fontSize: 15, fontWeight: 700, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 10, boxShadow: `0 12px 40px ${C.goldGlow}, 0 0 0 1px ${C.gold}`, transition: "transform 0.2s, box-shadow 0.2s", fontFamily: "inherit", letterSpacing: 0.3 }}>
@@ -276,7 +276,7 @@ export default function Home() {
                 <div style={{ flexShrink: 0, width: 64, height: 64, borderRadius: "50%", background: `radial-gradient(circle, ${i % 2 === 0 ? C.goldSoft : "rgba(147,197,253,0.20)"} 0%, transparent 70%)`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: DISPLAY, fontSize: 22, fontWeight: 600, color: i % 2 === 0 ? C.goldBright : C.royal }}>{i + 1}</div>
                 <div style={{ flex: 1 }}>
                   <p style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "1.18rem", lineHeight: 1.6, color: C.text, margin: "0 0 10px" }}>« {v.text} »</p>
-                  <div style={{ fontFamily: DISPLAY, fontSize: 11, fontWeight: 600, letterSpacing: 2, color: i % 2 === 0 ? C.goldBright : C.royal, textTransform: "uppercase" }}>— {v.ref}</div>
+                  <div style={{ fontFamily: DISPLAY, fontSize: 11, fontWeight: 600, letterSpacing: 2, color: i % 2 === 0 ? C.goldBright : C.royal, textTransform: "uppercase" }}> ·  {v.ref}</div>
                 </div>
               </div>
             ))}
@@ -328,7 +328,7 @@ export default function Home() {
             <span style={{ fontFamily: DISPLAY, fontSize: 18, fontWeight: 600, letterSpacing: 1.5, color: C.deep }}>inme<span style={{ color: C.goldBright }}>.</span>one</span>
           </div>
           <p style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "0.95rem", color: C.textMuted, maxWidth: 480, margin: "0 auto 18px" }}>« Voici, je me tiens à la porte, et je frappe. Si quelqu'un entend ma voix et ouvre la porte, j'entrerai. »<br /><span style={{ color: C.goldBright, fontFamily: DISPLAY, fontSize: 11, fontStyle: "normal", letterSpacing: 2, fontWeight: 600 }}>Apocalypse 3:20</span></p>
-          <p style={{ fontSize: 12, color: C.textSoft, margin: 0 }}>© {new Date().getFullYear()} inme.one — In Me, In You. Un compagnon spirituel disponible 24h/24.</p>
+          <p style={{ fontSize: 12, color: C.textSoft, margin: 0 }}>© {new Date().getFullYear()} inme.one · In Me, In You. Un compagnon spirituel disponible 24h/24.</p>
         </div>
       </footer>
 

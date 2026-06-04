@@ -1,4 +1,4 @@
-"""inme.one backend — Biblical AI counselor.
+﻿"""inme.one backend · Biblical AI counselor.
 
 Receives a user's question or burden, returns a compassionate, scripturally-grounded
 reply with at least one Bible verse citation. Falls back to a curated static message
@@ -15,7 +15,7 @@ from .llm import chat, is_configured
 
 app = FastAPI(
     title="inme.one Backend",
-    description="Compagnon spirituel IA — réponses ancrées dans les Écritures.",
+    description="Compagnon spirituel IA · réponses ancrées dans les Écritures.",
     version="0.1.0",
 )
 
@@ -40,8 +40,8 @@ Règles strictes :
 6. Tu termines par une invitation douce : prière courte, méditation, ou action concrète.
 7. Tu NE donnes JAMAIS de conseil médical, juridique ou financier. Si la personne semble en grave détresse psychologique (suicide, violence), tu l'invites doucement à contacter une ligne d'écoute professionnelle.
 8. Maximum 280 mots. Pas de listes à puces, juste du texte fluide.
-9. Pas d'emoji.
-10. Tu signes simplement « — Inme » à la fin.
+9. Pas d'emoji. Pas de tirets cadratins (—). Pour séparer des idées utilise une virgule, un point ou un point-virgule.
+10. Tu signes simplement « Inme » à la fin, sans tiret ni flèche avant.
 
 Tu joues le rôle d'un compagnon spirituel disponible 24h/24, formé sur l'ensemble du canon biblique. Quand on te parle d'une émotion (peur, tristesse, doute, joie, gratitude), tu trouves le verset le plus juste pour cet état."""
 
@@ -56,8 +56,8 @@ Strict rules:
 6. End with a soft invitation: short prayer, meditation, or concrete action.
 7. NEVER give medical, legal, or financial advice. If the person seems in severe psychological distress (suicide, violence), gently invite them to call a professional helpline.
 8. Maximum 280 words. No bullet lists, just flowing prose.
-9. No emoji.
-10. Simply sign off with "— Inme".
+9. No emoji. No em-dashes (—). Use commas, periods, or semicolons to separate ideas.
+10. Sign off simply with "Inme" at the end, no leading dash or arrow.
 
 You play the role of a spiritual companion available 24/7, trained on the entire biblical canon. When someone shares an emotion (fear, sadness, doubt, joy, gratitude), you find the verse that fits that state best."""
 
@@ -128,16 +128,16 @@ def _build_static_reply(lang: str) -> str:
         return (
             "I hear you, friend. Whatever weighs on your heart this moment, you are not alone in it.\n\n"
             "Scripture meets us exactly where we are. When the day feels heavy, the Lord himself promises rest "
-            "to those who come. He does not require us to have it all together first — only to come.\n\n"
-            "\"Come to me, all you who are weary and burdened, and I will give you rest.\" — Matthew 11:28\n\n"
-            "Take a slow breath. Speak even one word — \"help\" or \"thank you\" — and let it rise. You are heard.\n\n"
-            "— Inme"
+            "to those who come. He does not require us to have it all together first; only to come.\n\n"
+            "\"Come to me, all you who are weary and burdened, and I will give you rest.\" (Matthew 11:28)\n\n"
+            "Take a slow breath. Speak even one word, \"help\" or \"thank you\", and let it rise. You are heard.\n\n"
+            "Inme"
         )
     return (
         "Je t'écoute, ami. Quel que soit ce qui pèse sur ton cœur en ce moment, tu ne le portes pas seul.\n\n"
         "L'Écriture nous rejoint exactement là où nous sommes. Quand le jour devient lourd, le Seigneur lui-même "
-        "promet le repos à ceux qui viennent. Il ne demande pas que nous ayons tout réglé avant — seulement de venir.\n\n"
-        "« Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. » — Matthieu 11:28\n\n"
-        "Inspire lentement. Murmure même un seul mot — « aide » ou « merci » — et laisse-le s'élever. Tu es entendu.\n\n"
-        "— Inme"
+        "promet le repos à ceux qui viennent. Il ne demande pas que nous ayons tout réglé avant ; seulement de venir.\n\n"
+        "« Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. » (Matthieu 11:28)\n\n"
+        "Inspire lentement. Murmure même un seul mot, « aide » ou « merci », et laisse-le s'élever. Tu es entendu.\n\n"
+        "Inme"
     )

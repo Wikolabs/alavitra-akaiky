@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 const inter = Inter({
@@ -10,9 +10,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://inme.one"),
-  title: "inme.one — Conseiller biblique IA + Église en ligne, 24h/24",
+  title: "inme.one · Conseiller biblique IA + Église en ligne, 24h/24",
   description:
-    "Un compagnon spirituel disponible jour et nuit. Dialoguez avec un conseiller IA formé sur les Écritures, écoutez des messages de la communauté, recevez la Lumière. inme — In Me, In You.",
+    "Un compagnon spirituel disponible jour et nuit. Dialoguez avec un conseiller IA formé sur les Écritures, écoutez des messages de la communauté, recevez la Lumière. inme · In Me, In You.",
   keywords: [
     "conseiller biblique",
     "chatbot spirituel",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon-32.png",
   },
   openGraph: {
-    title: "inme.one — Conseiller biblique IA + Église en ligne",
+    title: "inme.one · Conseiller biblique IA + Église en ligne",
     description:
       "Trouvez la Paix. Recevez la Lumière. Un compagnon spirituel formé sur les Écritures, disponible 24h/24.",
     type: "website",
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "inme.one — Trouvez la Paix. Recevez la Lumière.",
+        alt: "inme.one · Trouvez la Paix. Recevez la Lumière.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "inme.one — Conseiller biblique IA + Église en ligne",
+    title: "inme.one · Conseiller biblique IA + Église en ligne",
     description: "Trouvez la Paix. Recevez la Lumière. Disponible 24h/24.",
     images: ["/og-image.png"],
   },
