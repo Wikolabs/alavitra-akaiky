@@ -1,21 +1,21 @@
-"""PulseScope demo backend — production-ready POC.
+"""inme.one backend — Biblical AI counselor.
 
-In production: this service would also schedule scrapes, enrich with vector
-search over historical signals, and push briefs to Slack via OAuth.
-For the demo: it only invokes the LLM and returns the brief.
+Receives a user's question or burden, returns a compassionate, scripturally-grounded
+reply with at least one Bible verse citation. Falls back to a curated static message
+if no LLM key is configured or the call fails.
 """
 from datetime import datetime, timezone
-from typing import List, Literal
+from typing import Literal
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from .llm import chat, is_configured
 
 app = FastAPI(
-    title="PulseScope Demo Backend",
-    description="POC backend — Groq/Gemini LLM. No third-party connections.",
+    title="inme.one Backend",
+    description="Compagnon spirituel IA — réponses ancrées dans les Écritures.",
     version="0.1.0",
 )
 
@@ -29,45 +29,49 @@ app.add_middleware(
 # ─────────────────────────────────────────────────────────────────────────────
 # Prompts
 # ─────────────────────────────────────────────────────────────────────────────
-SYSTEM_PROMPT_FR = """Tu es PulseScope, un agent IA de veille marche pour dirigeants B2B. Tu produis un briefing executif quotidien sur les concurrents d'un utilisateur, dans le style des messages Slack de comite strategique : structure, factuel, actionnable.
+SYSTEM_PROMPT_FR = """Tu es Inme, un conseiller IA spirituel formé sur les Écritures Saintes (Bible) et la théologie chrétienne classique. Tu écoutes la personne et tu réponds avec compassion, profondeur et bienveillance.
 
-Format de sortie exact en MARKDOWN :
-**🎯 Faits du jour**
-- [3-4 puces, chaque puce mentionne un concurrent et une nouvelle observable (levee, lancement, recrutement strategique, partenariat...)]
+Règles strictes :
+1. Tu cites toujours AU MOINS UN verset biblique pertinent, avec la référence (ex : « Jean 14:27 »).
+2. Ton style : doux, contemplatif, jamais condescendant. Tu accompagnes, tu n'imposes pas.
+3. Tu commences par un mot d'accueil empathique (1 ligne).
+4. Puis un développement théologique/spirituel (3-5 phrases).
+5. Puis le(s) verset(s) cité(s) en italique.
+6. Tu termines par une invitation douce : prière courte, méditation, ou action concrète.
+7. Tu NE donnes JAMAIS de conseil médical, juridique ou financier. Si la personne semble en grave détresse psychologique (suicide, violence), tu l'invites doucement à contacter une ligne d'écoute professionnelle.
+8. Maximum 280 mots. Pas de listes à puces, juste du texte fluide.
+9. Pas d'emoji.
+10. Tu signes simplement « — Inme » à la fin.
 
-**🧠 Insights cles**
-- [2-3 puces interpretant les faits, lien de cause a effet, signaux faibles]
+Tu joues le rôle d'un compagnon spirituel disponible 24h/24, formé sur l'ensemble du canon biblique. Quand on te parle d'une émotion (peur, tristesse, doute, joie, gratitude), tu trouves le verset le plus juste pour cet état."""
 
-**⚡ Actions recommandees**
-- [2-3 puces concretes, verbe d'action, equipe destinataire entre crochets]
+SYSTEM_PROMPT_EN = """You are Inme, a spiritual AI counselor trained on the Holy Scriptures (Bible) and classical Christian theology. You listen to the person and reply with compassion, depth, and kindness.
 
-Tu DOIS inventer des faits realistes pour la demo (pas de "je n'ai pas access internet"). Tu joues le role d'un analyste senior qui a fait son scan ce matin. Reste sobre, evite l'enthousiasme commercial. Maximum 350 mots."""
+Strict rules:
+1. Always quote AT LEAST ONE relevant Bible verse with its reference (e.g., "John 14:27").
+2. Style: gentle, contemplative, never condescending. You accompany, you don't impose.
+3. Start with an empathetic greeting (1 line).
+4. Then a theological/spiritual reflection (3-5 sentences).
+5. Then the verse(s) in italics.
+6. End with a soft invitation: short prayer, meditation, or concrete action.
+7. NEVER give medical, legal, or financial advice. If the person seems in severe psychological distress (suicide, violence), gently invite them to call a professional helpline.
+8. Maximum 280 words. No bullet lists, just flowing prose.
+9. No emoji.
+10. Simply sign off with "— Inme".
 
-SYSTEM_PROMPT_EN = """You are PulseScope, an AI market intelligence agent for B2B executives. You produce a daily executive briefing on the user's competitors, in the style of strategy committee Slack messages: structured, factual, actionable.
-
-Exact MARKDOWN output format:
-**🎯 Today's facts**
-- [3-4 bullets, each mentions a competitor and an observable news (raise, launch, strategic hire, partnership...)]
-
-**🧠 Key insights**
-- [2-3 bullets interpreting the facts, causality, weak signals]
-
-**⚡ Recommended actions**
-- [2-3 concrete bullets, action verb, target team in brackets]
-
-You MUST invent realistic facts for the demo (no "I have no internet access"). You're playing a senior analyst who ran the scan this morning. Stay sober, avoid commercial enthusiasm. Maximum 350 words."""
+You play the role of a spiritual companion available 24/7, trained on the entire biblical canon. When someone shares an emotion (fear, sadness, doubt, joy, gratitude), you find the verse that fits that state best."""
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Models
 # ─────────────────────────────────────────────────────────────────────────────
 class GenerateRequest(BaseModel):
-    competitors: List[str] = Field(..., min_length=1, max_length=5)
+    message: str
     lang: Literal["fr", "en"] = "fr"
 
 
 class GenerateResponse(BaseModel):
-    brief: str
+    reply: str
     model: str
     generated_at: str
     static_mode: bool = False
@@ -78,29 +82,20 @@ class GenerateResponse(BaseModel):
 # ─────────────────────────────────────────────────────────────────────────────
 @app.get("/health")
 def health():
-    return {
-        "status": "ok",
-        "service": "pulsescope-backend",
-        "llm_configured": is_configured(),
-    }
+    return {"status": "ok", "service": "inme-backend", "llm_configured": is_configured()}
 
 
 @app.post("/process", response_model=GenerateResponse)
 async def process(req: GenerateRequest) -> GenerateResponse:
-    competitors = [c.strip() for c in req.competitors if c.strip()][:5]
-    if not competitors:
-        raise HTTPException(status_code=400, detail="empty_competitors")
+    message = (req.message or "").strip()[:1500]
+    if not message:
+        raise HTTPException(status_code=400, detail="empty_message")
 
     now_iso = datetime.now(timezone.utc).isoformat()
-    user_msg = (
-        f"Concurrents a surveiller aujourd'hui : {', '.join(competitors)}. Genere le briefing executif du jour."
-        if req.lang == "fr"
-        else f"Today's competitors to monitor: {', '.join(competitors)}. Generate today's executive briefing."
-    )
 
     if not is_configured():
         return GenerateResponse(
-            brief=_build_mock_brief(competitors, req.lang),
+            reply=_build_static_reply(req.lang),
             model="static-mock",
             generated_at=now_iso,
             static_mode=True,
@@ -110,54 +105,39 @@ async def process(req: GenerateRequest) -> GenerateResponse:
         text, model = await chat(
             [
                 {"role": "system", "content": SYSTEM_PROMPT_FR if req.lang == "fr" else SYSTEM_PROMPT_EN},
-                {"role": "user", "content": user_msg},
+                {"role": "user", "content": message},
             ],
-            max_tokens=900,
+            max_tokens=600,
         )
-    except Exception as e:
-        # Graceful fallback to static brief if LLM all fails
+    except Exception:
         return GenerateResponse(
-            brief=_build_mock_brief(competitors, req.lang),
+            reply=_build_static_reply(req.lang),
             model="static-mock",
             generated_at=now_iso,
             static_mode=True,
         )
 
-    return GenerateResponse(brief=text, model=model, generated_at=now_iso)
+    return GenerateResponse(reply=text, model=model, generated_at=now_iso)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Mock brief (used when no LLM key configured)
+# Static fallback (when no LLM key configured or LLM fails)
 # ─────────────────────────────────────────────────────────────────────────────
-def _build_mock_brief(competitors: List[str], lang: str) -> str:
-    c1 = competitors[0] if len(competitors) > 0 else "ConcurrentA"
-    c2 = competitors[1] if len(competitors) > 1 else "ConcurrentB"
-    c3 = competitors[2] if len(competitors) > 2 else "ConcurrentC"
-
+def _build_static_reply(lang: str) -> str:
     if lang == "en":
         return (
-            f"**🎯 Today's facts**\n"
-            f"- {c1} announced a $14M Series A led by a Tier-1 European fund. Roadmap shifts to enterprise mid-market.\n"
-            f"- {c2} launched a public API yesterday. 3 new integrations live (Slack, Notion, Linear).\n"
-            f"- {c3} hired a former VP Sales from a leading competitor. Strong sales push expected H2.\n\n"
-            f"**🧠 Key insights**\n"
-            f"- The combined {c1} raise + {c2} API launch signals the segment moving from product-led to platform-led.\n"
-            f"- {c3}'s hire pattern matches their last 2 enterprise pushes — territory expansion in DACH likely.\n\n"
-            f"**⚡ Recommended actions**\n"
-            f"- Accelerate own enterprise tier release — feature parity check vs {c1} this week [Product]\n"
-            f"- Audit API surface and write competitive doc vs {c2} [Engineering]\n"
-            f"- Brief sales on {c3} talk track — anticipate procurement comparisons [Sales]"
+            "I hear you, friend. Whatever weighs on your heart this moment, you are not alone in it.\n\n"
+            "Scripture meets us exactly where we are. When the day feels heavy, the Lord himself promises rest "
+            "to those who come. He does not require us to have it all together first — only to come.\n\n"
+            "\"Come to me, all you who are weary and burdened, and I will give you rest.\" — Matthew 11:28\n\n"
+            "Take a slow breath. Speak even one word — \"help\" or \"thank you\" — and let it rise. You are heard.\n\n"
+            "— Inme"
         )
     return (
-        f"**🎯 Faits du jour**\n"
-        f"- {c1} a leve 12M EUR en Serie A menee par un fonds europeen Tier-1. Roadmap recentree sur l'entreprise mid-market.\n"
-        f"- {c2} a lance une API publique hier. 3 nouvelles integrations live (Slack, Notion, Linear).\n"
-        f"- {c3} recrute un ex-VP Sales d'un concurrent majeur. Forte poussee commerciale attendue H2.\n\n"
-        f"**🧠 Insights cles**\n"
-        f"- La combinaison levee de {c1} + lancement API {c2} indique que le segment passe d'un modele product-led a platform-led.\n"
-        f"- Le pattern de recrutement de {c3} colle a leur 2 derniers pushes enterprise — extension DACH probable.\n\n"
-        f"**⚡ Actions recommandees**\n"
-        f"- Accelerer la sortie du tier enterprise — verif parite features vs {c1} cette semaine [Produit]\n"
-        f"- Auditer la surface API et rediger un comparatif vs {c2} [Engineering]\n"
-        f"- Briefer sales sur {c3} — anticiper les comparaisons en achat [Commercial]"
+        "Je t'écoute, ami. Quel que soit ce qui pèse sur ton cœur en ce moment, tu ne le portes pas seul.\n\n"
+        "L'Écriture nous rejoint exactement là où nous sommes. Quand le jour devient lourd, le Seigneur lui-même "
+        "promet le repos à ceux qui viennent. Il ne demande pas que nous ayons tout réglé avant — seulement de venir.\n\n"
+        "« Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. » — Matthieu 11:28\n\n"
+        "Inspire lentement. Murmure même un seul mot — « aide » ou « merci » — et laisse-le s'élever. Tu es entendu.\n\n"
+        "— Inme"
     )
