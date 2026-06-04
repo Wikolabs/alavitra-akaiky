@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://inme.one"),
   title: "inme.one — Conseiller biblique IA + Église en ligne, 24h/24",
   description:
     "Un compagnon spirituel disponible jour et nuit. Dialoguez avec un conseiller IA formé sur les Écritures, écoutez des messages de la communauté, recevez la Lumière. inme — In Me, In You.",
@@ -23,6 +24,15 @@ export const metadata: Metadata = {
     "Révélation",
     "Foi",
   ].join(", "),
+  icons: {
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-32.png",
+  },
   openGraph: {
     title: "inme.one — Conseiller biblique IA + Église en ligne",
     description:
@@ -30,6 +40,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "inme.one",
+    url: "https://inme.one",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "inme.one — Trouvez la Paix. Recevez la Lumière.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "inme.one — Conseiller biblique IA + Église en ligne",
+    description: "Trouvez la Paix. Recevez la Lumière. Disponible 24h/24.",
+    images: ["/og-image.png"],
   },
 };
 

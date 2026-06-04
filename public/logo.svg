@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- inme.one — Spiritual dove logo. White & gold on transparent. -->
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D4A574"/>
+    </linearGradient>
+  </defs>
+  <!-- Soft halo behind the dove -->
+  <circle cx="32" cy="32" r="30" fill="url(#halo)"/>
+  <!-- Dove body + wing -->
+  <path d="M32 8 C 38 8 42 12 42 18 C 42 22 40 25 36 27 C 44 28 52 32 56 40 C 56 44 52 48 46 48 C 42 48 40 46 38 44 C 36 48 32 50 28 50 C 18 50 10 44 8 36 C 12 38 18 36 22 32 C 18 30 14 26 14 20 C 14 14 18 8 32 8 Z" fill="url(#bodyGrad)" opacity="0.92"/>
+  <!-- Eye highlight -->
+  <circle cx="40" cy="18" r="1.5" fill="#FFFFFF"/>
+</svg>

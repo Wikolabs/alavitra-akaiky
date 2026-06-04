@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#FFFBF0"/>
+      <stop offset="40%" stop-color="#F0F8FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </radialGradient>
+    <radialGradient id="beam" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="doveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D4A574"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Descending light beam from top -->
+  <rect width="1200" height="630" fill="url(#beam)"/>
+
+  <!-- Decorative ascending dots (gold + sky blue) -->
+  <g opacity="0.55">
+    <circle cx="120"  cy="500" r="5" fill="#F59E0B"/>
+    <circle cx="220"  cy="420" r="4" fill="#93C5FD"/>
+    <circle cx="980"  cy="510" r="5" fill="#F59E0B"/>
+    <circle cx="1080" cy="430" r="4" fill="#D4A574"/>
+    <circle cx="90"   cy="200" r="3" fill="#D4A574"/>
+    <circle cx="1100" cy="250" r="3" fill="#93C5FD"/>
+  </g>
+
+  <!-- Dove centered top -->
+  <g transform="translate(540 110)">
+    <circle cx="60" cy="60" r="58" fill="#F59E0B" opacity="0.10"/>
+    <g transform="translate(28 28) scale(1.7)">
+      <path d="M32 8 C 38 8 42 12 42 18 C 42 22 40 25 36 27 C 44 28 52 32 56 40 C 56 44 52 48 46 48 C 42 48 40 46 38 44 C 36 48 32 50 28 50 C 18 50 10 44 8 36 C 12 38 18 36 22 32 C 18 30 14 26 14 20 C 14 14 18 8 32 8 Z"
+        fill="url(#doveGrad)" opacity="0.92"/>
+      <circle cx="40" cy="18" r="1.5" fill="#FFFFFF"/>
+    </g>
+  </g>
+
+  <!-- Brand: inme.one -->
+  <text x="600" y="380" font-family="Cinzel, Georgia, serif" font-size="110" font-weight="600"
+        text-anchor="middle" fill="url(#titleGrad)" letter-spacing="6">inme<tspan fill="#F59E0B">.</tspan>one</text>
+
+  <!-- Tagline -->
+  <text x="600" y="450" font-family="Cormorant Garamond, Georgia, serif" font-size="36" font-style="italic"
+        text-anchor="middle" fill="#475569">Trouvez la Paix. Recevez la Lumière.</text>
+
+  <!-- In Me · In You badge -->
+  <g transform="translate(600 510)">
+    <rect x="-145" y="-22" width="290" height="44" rx="22" fill="#F59E0B" fill-opacity="0.10" stroke="#F59E0B" stroke-opacity="0.30" stroke-width="1.2"/>
+    <text x="0" y="6" font-family="Cinzel, Georgia, serif" font-size="16" font-weight="700"
+          text-anchor="middle" fill="#F59E0B" letter-spacing="3.5">IN ME · IN YOU</text>
+  </g>
+
+  <!-- Bottom verse mini-strip -->
+  <text x="600" y="595" font-family="Cormorant Garamond, Georgia, serif" font-size="20" font-style="italic"
+        text-anchor="middle" fill="#64748B">« Venez à moi, vous tous qui êtes fatigués » — Matthieu 11:28</text>
+</svg>
