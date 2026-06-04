@@ -131,7 +131,7 @@ function ChatDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
     setInput("");
     setLoading(true);
     try {
-      const r = await fetch("/offers/inme/demo/api/demo", {
+      const r = await fetch("/api/demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, lang: "fr" }),
