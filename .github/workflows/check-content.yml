@@ -1,0 +1,17 @@
+name: Vérifier les liens des messages
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  videos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Chaque message mis en avant vit-il encore
+        run: node scripts/check-videos.mjs

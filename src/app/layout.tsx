@@ -1,28 +1,23 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap", weight: ["400", "500", "600"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://inme.one"),
-  title: "inme.one · Conseiller biblique IA + Église en ligne, 24h/24",
+  title: "inme.one, un compagnon qui écoute, une Écriture qui répond",
   description:
-    "Un compagnon spirituel disponible jour et nuit. Dialoguez avec un conseiller IA formé sur les Écritures, écoutez des messages de la communauté, recevez la Lumière. inme · In Me, In You.",
+    "Dites ce que vous portez. inme.one répond avec un passage exact des Écritures, en français ou en malgache, puis vous propose un toriteny à écouter sur le même sujet. Gratuit, anonyme, jour et nuit.",
   keywords: [
     "conseiller biblique",
-    "chatbot spirituel",
-    "église en ligne",
-    "théologie chrétienne",
-    "verset biblique",
+    "toriteny malagasy",
+    "verset du jour",
+    "Baiboly malagasy",
+    "Louis Segond",
     "prière",
-    "Réveil",
-    "Révélation",
-    "Foi",
+    "accompagnement spirituel",
+    "inme.one",
   ].join(", "),
   icons: {
     icon: [
@@ -34,26 +29,19 @@ export const metadata: Metadata = {
     shortcut: "/favicon-32.png",
   },
   openGraph: {
-    title: "inme.one · Conseiller biblique IA + Église en ligne",
+    title: "inme.one, un compagnon qui écoute, une Écriture qui répond",
     description:
-      "Trouvez la Paix. Recevez la Lumière. Un compagnon spirituel formé sur les Écritures, disponible 24h/24.",
+      "Un passage exact des Écritures pour ce que vous portez, en français ou en malgache, et un toriteny à écouter sur le même sujet.",
     type: "website",
     locale: "fr_FR",
     siteName: "inme.one",
     url: "https://inme.one",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "inme.one · Trouvez la Paix. Recevez la Lumière.",
-      },
-    ],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "inme.one" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "inme.one · Conseiller biblique IA + Église en ligne",
-    description: "Trouvez la Paix. Recevez la Lumière. Disponible 24h/24.",
+    title: "inme.one, un compagnon qui écoute, une Écriture qui répond",
+    description: "Un passage exact pour ce que vous portez, et un message à écouter.",
     images: ["/og-image.png"],
   },
 };
@@ -65,21 +53,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body
-        style={{
-          margin: 0,
-          fontFamily: "var(--font-body), Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          background: "#FFFFFF",
-          color: "#0F172A",
-          WebkitFontSmoothing: "antialiased",
-        }}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

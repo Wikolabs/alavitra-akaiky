@@ -4,9 +4,17 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
+const LANGS = ["fr", "mg", "en"] as const;
+type Lang = (typeof LANGS)[number];
+
+const EMPTY: Record<Lang, string> = {
+  fr: "Écrivez ce que vous portez, même en une ligne.",
+  mg: "Soraty izay entinao, na dia andalana iray aza.",
+  en: "Write what you carry, even in one line.",
+};
 
 export async function POST(req: Request) {
-  let body: { message?: string; lang?: "fr" | "en" } = {};
+  let body: { message?: string; lang?: string } = {};
   try {
     body = await req.json();
   } catch {
@@ -14,14 +22,9 @@ export async function POST(req: Request) {
   }
 
   const message = (body.message || "").trim().slice(0, 1500);
-  const lang: "fr" | "en" = body.lang === "en" ? "en" : "fr";
+  const lang: Lang = (LANGS as readonly string[]).includes(body.lang || "") ? (body.lang as Lang) : "fr";
 
-  if (!message) {
-    return NextResponse.json(
-      { error: lang === "fr" ? "Partagez votre question ou votre fardeau." : "Share your question or burden." },
-      { status: 400 }
-    );
-  }
+  if (!message) return NextResponse.json({ error: EMPTY[lang] }, { status: 400 });
 
   try {
     const r = await fetch(`${BACKEND_URL}/process`, {
@@ -31,11 +34,10 @@ export async function POST(req: Request) {
       cache: "no-store",
     });
     const j = await r.json();
-    if (!r.ok) {
-      return NextResponse.json({ error: j.detail || "backend_error" }, { status: r.status });
-    }
+    if (!r.ok) return NextResponse.json({ error: j.detail || "backend_error" }, { status: r.status });
     return NextResponse.json({
       reply: j.reply,
+      theme: j.theme ?? null,
       model: j.model,
       generatedAt: j.generated_at,
       staticMode: Boolean(j.static_mode),
