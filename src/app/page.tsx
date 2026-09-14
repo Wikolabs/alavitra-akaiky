@@ -50,38 +50,38 @@ function videoFor(key: string | null): Video | null {
 
 const T: Record<Lang, Record<string, string>> = {
   fr: {
-    tagline: "Un compagnon qui ecoute, une Ecriture qui repond.",
-    lead: "Dites ce que vous portez, avec vos mots. Inme repond avec un passage exact des Ecritures, puis vous propose un message a ecouter sur le meme sujet.",
+    tagline: "Un compagnon qui écoute, une Écriture qui répond.",
+    lead: "Dites ce que vous portez, avec vos mots. Inme répond avec un passage exact des Écritures, puis vous propose un message à écouter sur le même sujet.",
     start: "Parler maintenant",
-    listen: "Ecouter un message",
+    listen: "Écouter un message",
     verseOfDay: "Le passage du jour",
     chatTitle: "La conversation",
     chatSub: "Dites ce que vous portez.",
-    chatHint: "Rien n'est enregistre. Ecrivez comme vous parleriez.",
+    chatHint: "Rien n'est enregistré. Écrivez comme vous parleriez.",
     chatName: "Inme",
     chatStatus: "Gratuit, sans compte, ouvert jour et nuit",
     welcome: "Bienvenue. Dites avec vos mots ce que vous portez aujourd'hui, ou touchez la situation la plus proche ci-dessous.",
     placeholder: "Ce que je porte aujourd'hui.",
     send: "Envoyer",
-    thinking: "Inme ecoute",
+    thinking: "Inme écoute",
     pickTheme: "Choisissez la situation",
     pickPrompt: "Ou prenez l'une de ces phrases",
     attach: "Le passage qui correspond",
-    attachVideo: "A ecouter",
+    attachVideo: "À écouter",
     example: "Exemple",
     themesTitle: "Ce que les gens apportent",
-    searchMore: "Chercher d'autres messages sur ce theme",
+    searchMore: "Chercher d'autres messages sur ce thème",
     sermonsTitle: "Les messages",
-    sermonsLead: "Des predications et des louanges publiques, sur les chaines de leurs Eglises. Rien n'est heberge ici, rien ne se lance sans votre clic.",
+    sermonsLead: "Des prédications et des louanges publiques, sur les chaînes de leurs Églises. Rien n'est hébergé ici, rien ne se lance sans votre clic.",
     filterAll: "Tout",
-    channels: "Les chaines",
+    channels: "Les chaînes",
     play: "Lire",
-    notice: "Inme accompagne, il ne remplace ni un pasteur, ni un medecin, ni un service d'ecoute. En cas de danger immediat, parlez a une personne de confiance pres de vous.",
+    notice: "Inme accompagne, il ne remplace ni un pasteur, ni un médecin, ni un service d'écoute. En cas de danger immédiat, parlez à une personne de confiance près de vous.",
     sources: "Sources",
-    sourcesText: "Textes bibliques : Louis Segond 1910 en francais, Baiboly Malagasy 1865 en malgache, via getbible.net, domaine public. Les videos appartiennent a leurs chaines et sont lues sur YouTube.",
-    indep: "Independance",
-    indepText: "Aucune chaine citee ici n'est affiliee a inme.one, et inme.one n'appartient a aucune Eglise. Les courants presentes le sont pour leur audience, pas en recommandation.",
-    fail: "La reponse n'est pas venue. Reessayez dans un instant.",
+    sourcesText: "Textes bibliques : Louis Segond 1910 en français, Baiboly Malagasy 1865 en malgache, via getbible.net, domaine public. Les vidéos appartiennent à leurs chaînes et sont lues sur YouTube.",
+    indep: "Indépendance",
+    indepText: "Aucune chaîne citée ici n'est affiliée à inme.one, et inme.one n'appartient à aucune Église. Les courants présentés le sont pour leur audience, pas en recommandation.",
+    fail: "La réponse n'est pas venue. Réessayez dans un instant.",
   },
   mg: {
     tagline: "Namana mihaino, Soratra Masina mamaly.",
@@ -437,7 +437,7 @@ export default function Page() {
                   ? "Toriteny henoina rehefa mangina ny alina."
                   : lang === "en"
                   ? "Messages to hear when the night is quiet."
-                  : "Des messages a ecouter quand la nuit est calme."}
+                  : "Des messages à écouter quand la nuit est calme."}
               </h2>
               <p className="lead" style={{ marginTop: 12 }}>
                 {t.sermonsLead}
@@ -492,7 +492,7 @@ export default function Page() {
             </div>
             <p style={{ fontFamily: "var(--font-mono)", fontSize: ".74rem" }}>
               {VIDEOS.length}{" "}
-              {lang === "mg" ? "horonan-tsary" : lang === "en" ? "videos" : "videos"}, {media.checkedAt}.
+              {lang === "mg" ? "horonan-tsary" : lang === "en" ? "videos" : "vidéos"}, {media.checkedAt}.
             </p>
           </div>
         </footer>

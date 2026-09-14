@@ -1,5 +1,5 @@
 {
-  "note": "Chaque lien est verifie un par un avec l'API oEmbed de YouTube. Aucune chaine n'est affiliee a inme.one : ce sont des liens publics, cites avec leur chaine d'origine. scripts/check-videos.mjs revalide la liste et la CI la passe une fois par semaine.",
+  "note": "Chaque lien est vérifié un par un avec l'API oEmbed de YouTube. Aucune chaîne n'est affiliée à inme.one : ce sont des liens publics, cités avec leur chaîne d'origine. scripts/check-videos.mjs revalide la liste et la CI la passe une fois par semaine.",
   "checkedAt": "2026-09-14",
   "streams": {
     "toriteny": {
@@ -13,7 +13,7 @@
       "en": "Pastor Jocelyn Ranjarison, MRE"
     },
     "shine": {
-      "fr": "Eglise Evangelique SHINE",
+      "fr": "Église Évangélique SHINE",
       "mg": "Fiangonana SHINE",
       "en": "SHINE Evangelical Church"
     },
@@ -45,7 +45,7 @@
         "decision",
         "gratitude"
       ],
-      "why": "Une predication dominicale complete, dans le culte tel qu'il se vit."
+      "why": "Une prédication dominicale complète, dans le culte tel qu'il se vit."
     },
     {
       "id": "MuwqfBVtqd0",
@@ -57,7 +57,7 @@
         "famille",
         "pardon"
       ],
-      "why": "Une autre voix, une autre paroisse, pour entendre le meme texte autrement."
+      "why": "Une autre voix, une autre paroisse, pour entendre le même texte autrement."
     },
     {
       "id": "9sJjNyxFnFE",
@@ -69,7 +69,7 @@
         "epuisement",
         "solitude"
       ],
-      "why": "Un pain quotidien court, a ecouter le matin avant de partir."
+      "why": "Un pain quotidien court, à écouter le matin avant de partir."
     },
     {
       "id": "avnU02cTaVk",
@@ -81,7 +81,7 @@
         "solitude",
         "peur"
       ],
-      "why": "Une lecture suivie du texte, puis la predication, depuis la diaspora."
+      "why": "Une lecture suivie du texte, puis la prédication, depuis la diaspora."
     },
     {
       "id": "p8L3K1aG6nM",
@@ -105,7 +105,7 @@
         "argent",
         "maladie"
       ],
-      "why": "Un culte entier, pour les jours ou l'on a besoin de rester longtemps."
+      "why": "Un culte entier, pour les jours où l'on a besoin de rester longtemps."
     },
     {
       "id": "doXilVqBkfU",
@@ -117,7 +117,7 @@
         "epuisement",
         "doute"
       ],
-      "why": "Un enseignement sur la vie renouvelee avec le Saint-Esprit."
+      "why": "Un enseignement sur la vie renouvelée avec le Saint-Esprit."
     },
     {
       "id": "ACO27ufoGt0",
@@ -129,7 +129,7 @@
         "doute",
         "decision"
       ],
-      "why": "La suite de sa serie sur la marche quotidienne avec l'Esprit."
+      "why": "La suite de sa série sur la marche quotidienne avec l'Esprit."
     },
     {
       "id": "Zo_F8-vnk_M",
@@ -141,7 +141,7 @@
         "solitude",
         "gratitude"
       ],
-      "why": "Une parole d'encouragement courte, diffusee par son Eglise MRE."
+      "why": "Une parole d'encouragement courte, diffusée par son Église MRE."
     },
     {
       "id": "zB-ZZa1mW30",
@@ -152,7 +152,7 @@
       "themes": [
         "peur"
       ],
-      "why": "Une predication entiere sur la peur, et sur ce qu'elle empeche."
+      "why": "Une prédication entière sur la peur, et sur ce qu'elle empêche."
     },
     {
       "id": "q95Ajhsfj4Y",
@@ -187,7 +187,7 @@
       "themes": [
         "gratitude"
       ],
-      "why": "Le rassemblement des trente ans de l'Eglise Apokalypsy, au stade Barea."
+      "why": "Le rassemblement des trente ans de l'Église Apokalypsy, au stade Barea."
     },
     {
       "id": "-buHcLt5gyI",
@@ -199,7 +199,7 @@
         "doute",
         "decision"
       ],
-      "why": "Une predication complete dans son temple d'Ambohimarina."
+      "why": "Une prédication complète dans son temple d'Ambohimarina."
     },
     {
       "id": "RfM6k4IBvPM",
@@ -211,7 +211,7 @@
         "peur",
         "doute"
       ],
-      "why": "Une entree dans le livre de l'Apocalypse, sans sensationnalisme."
+      "why": "Une entrée dans le livre de l'Apocalypse, sans sensationnalisme."
     },
     {
       "id": "OS8bbt4IyMQ",
@@ -223,7 +223,7 @@
         "epuisement",
         "gratitude"
       ],
-      "why": "Une adoration malgache qui installe le calme avant la priere."
+      "why": "Une adoration malgache qui installe le calme avant la prière."
     },
     {
       "id": "IASI1buzllo",
@@ -235,7 +235,7 @@
         "pardon",
         "decision"
       ],
-      "why": "Un cantique de renouveau tres connu a Madagascar."
+      "why": "Un cantique de renouveau très connu à Madagascar."
     },
     {
       "id": "Zt6MhHEzP0I",
@@ -247,7 +247,7 @@
         "solitude",
         "epuisement"
       ],
-      "why": "Un long medley de louange, pour accompagner un temps de priere."
+      "why": "Un long medley de louange, pour accompagner un temps de prière."
     },
     {
       "id": "n0FBb6hnwTo",
@@ -259,7 +259,7 @@
         "gratitude",
         "deuil"
       ],
-      "why": "Une louange intime sur la fidelite de Dieu, portee par Bethel Music."
+      "why": "Une louange intime sur la fidélité de Dieu, portée par Bethel Music."
     },
     {
       "id": "f2oxGYpuLkw",
@@ -271,7 +271,7 @@
         "epuisement",
         "doute"
       ],
-      "why": "Un chant d'adoration franc, pour relever la foi quand tout pese."
+      "why": "Un chant d'adoration franc, pour relever la foi quand tout pèse."
     },
     {
       "id": "q5m09rqOoxE",
@@ -283,7 +283,7 @@
         "doute",
         "peur"
       ],
-      "why": "Une meditation chantee sur les promesses que Dieu tient."
+      "why": "Une méditation chantée sur les promesses que Dieu tient."
     },
     {
       "id": "7IIZIPtQuW8",
@@ -295,7 +295,7 @@
         "gratitude",
         "solitude"
       ],
-      "why": "Une louange collective enregistree en direct, bonne pour prier le matin."
+      "why": "Une louange collective enregistrée en direct, bonne pour prier le matin."
     }
   ],
   "channels": [
