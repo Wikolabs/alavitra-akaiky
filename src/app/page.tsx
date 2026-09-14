@@ -3,6 +3,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import versesData from "@/data/verses.json";
 import media from "@/data/media.json";
+import contacts from "@/data/contacts.json";
+import Logo from "./Logo";
+import Sidebar from "./Sidebar";
+import VideoCard from "./VideoCard";
+import { useConversations, type Turn } from "./useConversations";
 
 type Lang = "fr" | "mg" | "en";
 
@@ -22,45 +27,63 @@ interface Video {
   themes: string[];
   why: string;
 }
+interface Contact {
+  name: string;
+  kind: string;
+  city: string;
+  url: string;
+  phone: string;
+  inChat?: boolean;
+  note: { fr: string; mg: string; en: string };
+}
 
 const THEMES = versesData.themes as Theme[];
 const VIDEOS = media.videos as Video[];
 const STREAMS = media.streams as Record<string, { fr: string; mg: string; en: string }>;
 const SEARCHES = media.searches as Record<string, { fr: string; mg: string }>;
+const PLACES = contacts.places as Contact[];
+const IN_CHAT = PLACES.filter((p) => p.inChat);
+const HELP = contacts.help as Contact[];
+const CONTACTS = [...PLACES, ...HELP];
 
 const DAY = () => Math.floor(Date.now() / 86400000);
-
 const verseText = (v: ThemeVerse, lang: Lang) => (lang === "mg" ? v.mg : v.fr);
 
-/** Passage du jour : stable sur la journee, sans appel reseau. */
 function passageOfDay() {
   const all = THEMES.flatMap((x) => x.verses);
   return all[DAY() % all.length];
 }
 
-function themeByKey(key: string | null) {
-  return key ? THEMES.find((x) => x.key === key) ?? null : null;
+const themeByKey = (key: string | null) => (key ? THEMES.find((x) => x.key === key) ?? null : null);
+
+/** Deux messages par situation, pris dans des courants differents quand c'est possible. */
+function videosFor(key: string | null): Video[] {
+  if (!key) return [];
+  const pool = VIDEOS.filter((v) => v.themes.includes(key));
+  if (pool.length <= 2) return pool;
+  const start = DAY() % pool.length;
+  const first = pool[start];
+  const other = pool.find((v, i) => i !== start && v.stream !== first.stream) ?? pool[(start + 1) % pool.length];
+  return [first, other];
 }
 
-function videoFor(key: string | null): Video | null {
-  if (!key) return null;
-  const pool = VIDEOS.filter((v) => v.themes.includes(key));
-  return pool.length ? pool[DAY() % pool.length] : null;
+/** Le domaine seul : une adresse complete deborde de l'ecran sur telephone. */
+function domainOf(url: string) {
+  return url.replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
 }
 
 const T: Record<Lang, Record<string, string>> = {
   fr: {
     tagline: "Un compagnon qui écoute, une Écriture qui répond.",
-    lead: "Dites ce que vous portez, avec vos mots. Inme répond avec un passage exact des Écritures, puis vous propose un message à écouter sur le même sujet.",
-    start: "Parler maintenant",
-    listen: "Écouter un message",
+    lead: "Dites ce que vous portez, avec vos mots. Inme répond avec un passage exact des Écritures, vous propose un message à écouter, et vous indique où trouver quelqu'un à qui parler.",
     verseOfDay: "Le passage du jour",
-    chatTitle: "La conversation",
-    chatSub: "Dites ce que vous portez.",
-    chatHint: "Rien n'est enregistré. Écrivez comme vous parleriez.",
-    chatName: "Inme",
-    chatStatus: "Gratuit, sans compte, ouvert jour et nuit",
-    welcome: "Bienvenue. Dites avec vos mots ce que vous portez aujourd'hui, ou touchez la situation la plus proche ci-dessous.",
+    newChat: "Nouvelle conversation",
+    history: "Vos conversations",
+    sideEmpty: "Vos conversations resteront ici, sur cet appareil seulement. Rien n'est envoyé nulle part.",
+    del: "Supprimer",
+    close: "Fermer",
+    menu: "Conversations",
+    welcome: "Bienvenue. Dites avec vos mots ce que vous portez aujourd'hui, ou touchez la situation la plus proche.",
     placeholder: "Ce que je porte aujourd'hui.",
     send: "Envoyer",
     thinking: "Inme écoute",
@@ -68,33 +91,34 @@ const T: Record<Lang, Record<string, string>> = {
     pickPrompt: "Ou prenez l'une de ces phrases",
     attach: "Le passage qui correspond",
     attachVideo: "À écouter",
+    attachTalk: "Parler à quelqu'un",
     example: "Exemple",
-    themesTitle: "Ce que les gens apportent",
     searchMore: "Chercher d'autres messages sur ce thème",
     sermonsTitle: "Les messages",
-    sermonsLead: "Des prédications et des louanges publiques, sur les chaînes de leurs Églises. Rien n'est hébergé ici, rien ne se lance sans votre clic.",
+    sermonsLead: "Des prédications, des messes et des louanges publiques, sur les chaînes de leurs Églises. Rien n'est hébergé ici, rien ne se lance sans votre clic.",
     filterAll: "Tout",
     channels: "Les chaînes",
     play: "Lire",
-    notice: "Inme accompagne, il ne remplace ni un pasteur, ni un médecin, ni un service d'écoute. En cas de danger immédiat, parlez à une personne de confiance près de vous.",
+    talkTitle: "Où parler à quelqu'un",
+    talkLead: "Des lieux qui publient eux-mêmes leurs coordonnées. Inme ne prend aucun rendez-vous à votre place et ne transmet rien.",
+    notice: "Inme accompagne, il ne remplace ni un pasteur, ni un prêtre, ni un médecin, ni un service d'écoute. En cas de danger immédiat, parlez à une personne de confiance près de vous.",
     sources: "Sources",
     sourcesText: "Textes bibliques : Louis Segond 1910 en français, Baiboly Malagasy 1865 en malgache, via getbible.net, domaine public. Les vidéos appartiennent à leurs chaînes et sont lues sur YouTube.",
     indep: "Indépendance",
-    indepText: "Aucune chaîne citée ici n'est affiliée à inme.one, et inme.one n'appartient à aucune Église. Les courants présentés le sont pour leur audience, pas en recommandation.",
+    indepText: "Aucune chaîne citée ici n'est affiliée à inme.one, et inme.one n'appartient à aucune Église. Catholiques, protestantes, évangéliques : les courants sont présentés côte à côte, pas en recommandation.",
     fail: "La réponse n'est pas venue. Réessayez dans un instant.",
   },
   mg: {
     tagline: "Namana mihaino, Soratra Masina mamaly.",
-    lead: "Lazao amin'ny teninao izay entinao. Mamaly amin'ny andininy marina Inme, dia manolotra toriteny henoina mikasika izany ihany.",
-    start: "Miresaka izao",
-    listen: "Mihaino toriteny",
+    lead: "Lazao amin'ny teninao izay entinao. Mamaly amin'ny andininy marina Inme, manolotra toriteny henoina, ary manondro izay toerana ahitana olona hiresahana.",
     verseOfDay: "Ny andininy androany",
-    chatTitle: "Ny resaka",
-    chatSub: "Lazao izay entinao.",
-    chatHint: "Tsy misy voatahiry. Soraty toy ny fitenenanao.",
-    chatName: "Inme",
-    chatStatus: "Maimaim-poana, tsy mila kaonty, misokatra andro aman'alina",
-    welcome: "Tongasoa. Lazao amin'ny teninao izay entinao androany, na tsindrio ny toe-javatra manakaiky indrindra eto ambany.",
+    newChat: "Resaka vaovao",
+    history: "Ny resakao",
+    sideEmpty: "Mijanona eto ny resakao, amin'ity fitaovana ity ihany. Tsy misy alefa na aiza na aiza.",
+    del: "Fafao",
+    close: "Hidio",
+    menu: "Resaka",
+    welcome: "Tongasoa. Lazao amin'ny teninao izay entinao androany, na tsindrio ny toe-javatra manakaiky indrindra.",
     placeholder: "Izay entiko androany.",
     send: "Alefa",
     thinking: "Mihaino Inme",
@@ -102,33 +126,34 @@ const T: Record<Lang, Record<string, string>> = {
     pickPrompt: "Na alaivo ny iray amin'ireto fehezanteny ireto",
     attach: "Ny andininy mifanaraka amin'izany",
     attachVideo: "Henoy",
+    attachTalk: "Misy olona hiresahana",
     example: "Ohatra",
-    themesTitle: "Izay entin'ny olona",
     searchMore: "Hitady toriteny hafa momba izany",
     sermonsTitle: "Ny toriteny",
-    sermonsLead: "Toriteny sy fiderana ampahibemaso, ao amin'ny fantsona an'ny Fiangonany. Tsy misy voatahiry eto, tsy misy mandeha raha tsy ianao no manindry.",
+    sermonsLead: "Toriteny, lamesa ary fiderana ampahibemaso, ao amin'ny fantsona an'ny Fiangonany. Tsy misy voatahiry eto, tsy misy mandeha raha tsy ianao no manindry.",
     filterAll: "Izy rehetra",
     channels: "Ny fantsona",
     play: "Henoy",
-    notice: "Manotrona Inme, fa tsy misolo mpitandrina, na dokotera, na sampan-drafitra manampy. Raha misy loza mananontanona, mitenena amin'olona akaiky azo itokisana.",
+    talkTitle: "Aiza no misy olona hiresahana",
+    talkLead: "Toerana mamoaka ny antsipirihany momba azy ireo ihany. Tsy manao fotoana ho anao i Inme, ary tsy mampita na inona na inona.",
+    notice: "Manotrona Inme, fa tsy misolo mpitandrina, na pretra, na dokotera, na sampan-drafitra manampy. Raha misy loza mananontanona, mitenena amin'olona akaiky azo itokisana.",
     sources: "Loharano",
     sourcesText: "Soratra Masina : Louis Segond 1910 amin'ny teny frantsay, Baiboly Malagasy 1865 amin'ny teny malagasy, avy amin'ny getbible.net. An'ny fantsona tompony ny horonan-tsary, ao amin'ny YouTube no mandeha.",
     indep: "Tsy miankina",
-    indepText: "Tsy misy fantsona voatanisa eto mifandray amin'ny inme.one, ary tsy an'ny Fiangonana iray ny inme.one. Aseho noho ny mpanaraka azy ireo fironana ireo, fa tsy hoe tolo-kevitra.",
+    indepText: "Tsy misy fantsona voatanisa eto mifandray amin'ny inme.one, ary tsy an'ny Fiangonana iray ny inme.one. Katolika, protestanta, evanjelika : aseho miaraka ireo fironana, fa tsy hoe tolo-kevitra.",
     fail: "Tsy tonga ny valiny. Andramo indray afaka kely.",
   },
   en: {
     tagline: "A companion who listens, a Scripture that answers.",
-    lead: "Say what you carry, in your own words. Inme replies with an exact passage, then offers a message to listen to on the same subject.",
-    start: "Talk now",
-    listen: "Listen to a message",
+    lead: "Say what you carry, in your own words. Inme replies with an exact passage, offers a message to listen to, and points to places where you can find someone to talk to.",
     verseOfDay: "Today's passage",
-    chatTitle: "The conversation",
-    chatSub: "Say what you carry.",
-    chatHint: "Nothing is stored. Write the way you would speak.",
-    chatName: "Inme",
-    chatStatus: "Free, no account, open day and night",
-    welcome: "Welcome. Say in your own words what you carry today, or tap the closest situation below.",
+    newChat: "New conversation",
+    history: "Your conversations",
+    sideEmpty: "Your conversations stay here, on this device only. Nothing is sent anywhere.",
+    del: "Delete",
+    close: "Close",
+    menu: "Conversations",
+    welcome: "Welcome. Say in your own words what you carry today, or tap the closest situation.",
     placeholder: "What I carry today.",
     send: "Send",
     thinking: "Inme is listening",
@@ -136,100 +161,87 @@ const T: Record<Lang, Record<string, string>> = {
     pickPrompt: "Or take one of these sentences",
     attach: "The passage that fits",
     attachVideo: "To listen to",
+    attachTalk: "Someone to talk to",
     example: "Example",
-    themesTitle: "What people bring",
     searchMore: "Find more messages on this theme",
     sermonsTitle: "The messages",
-    sermonsLead: "Public preaching and worship, on their churches' own channels. Nothing is hosted here, nothing plays until you click.",
+    sermonsLead: "Public preaching, Masses and worship, on their churches' own channels. Nothing is hosted here, nothing plays until you click.",
     filterAll: "All",
     channels: "The channels",
     play: "Play",
-    notice: "Inme accompanies, it replaces neither a pastor, nor a doctor, nor a helpline. If you are in immediate danger, speak to someone you trust nearby.",
+    talkTitle: "Where to find someone to talk to",
+    talkLead: "Places that publish their own contact details. Inme books nothing for you and passes nothing on.",
+    notice: "Inme accompanies, it replaces neither a pastor, a priest, a doctor, nor a helpline. If you are in immediate danger, speak to someone you trust nearby.",
     sources: "Sources",
     sourcesText: "Bible texts: Louis Segond 1910 in French, Baiboly Malagasy 1865 in Malagasy, via getbible.net, public domain. Videos belong to their channels and play on YouTube.",
     indep: "Independence",
-    indepText: "No channel listed here is affiliated with inme.one, and inme.one belongs to no church. These streams are shown for their audience, not as a recommendation.",
+    indepText: "No channel listed here is affiliated with inme.one, and inme.one belongs to no church. Catholic, Protestant, evangelical: the streams sit side by side, not as a recommendation.",
     fail: "The answer did not come. Try again in a moment.",
   },
 };
 
-function VideoCard({ v, lang, play }: { v: Video; lang: Lang; play: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <article className="video">
-      {open ? (
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0`}
-          title={v.title}
-          allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-          loading="lazy"
-        />
-      ) : (
-        <button className="video-thumb" onClick={() => setOpen(true)} aria-label={`${play} : ${v.title}`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`} alt="" loading="lazy" />
-          <span>{play}</span>
-        </button>
-      )}
-      <div className="video-meta">
-        <b>{v.title}</b>
-        <span>{v.channel}</span>
-        <p>{v.why}</p>
-      </div>
-    </article>
-  );
-}
-
-type Msg = { role: "you"; text: string } | { role: "inme"; text: string; theme: string | null; ref: string | null };
-
 export default function Page() {
   const [lang, setLang] = useState<Lang>("fr");
-  const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [picked, setPicked] = useState<string>(THEMES[0].key);
+  const [drawer, setDrawer] = useState(false);
+  const [stream, setStream] = useState<string>("all");
   const threadRef = useRef<HTMLDivElement>(null);
   const t = T[lang];
   const passage = useMemo(passageOfDay, []);
 
-  useEffect(() => {
-    threadRef.current?.scrollTo({ top: threadRef.current.scrollHeight, behavior: "smooth" });
-  }, [msgs, busy]);
+  const convo = useConversations("inme.conversations.v1");
+  const turns = convo.turns;
 
-  const send = async (raw?: string) => {
+  useEffect(() => {
+    if (turns.length === 0) return;
+    threadRef.current?.scrollTo({ top: threadRef.current.scrollHeight, behavior: "smooth" });
+  }, [turns.length, busy]);
+
+  async function send(raw?: string) {
     const text = (raw ?? input).trim();
     if (!text || busy) return;
-    setMsgs((m) => [...m, { role: "you", text }]);
+
+    /* Le modele recoit les derniers tours : sans cela il resalue a chaque
+       message et perd ce qui vient d'etre dit. */
+    const history = turns.map((x) => ({ role: x.role === "you" ? "user" : "assistant", content: x.text }));
+
+    convo.append({ role: "you", text });
     setInput("");
     setBusy(true);
+    setDrawer(false);
     try {
       const r = await fetch("/api/demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, lang }),
+        body: JSON.stringify({ message: text, lang, history }),
       });
       const j = await r.json();
-      if (!r.ok) throw new Error(j.error || "error");
-      setMsgs((m) => [...m, { role: "inme", text: j.reply, theme: j.theme ?? null, ref: j.ref ?? null }]);
+      if (!r.ok || !j.reply) throw new Error(j.error || "error");
+      convo.append({ role: "bot", text: j.reply, theme: j.theme ?? null, ref: j.ref ?? null });
       if (j.theme) setPicked(j.theme);
     } catch {
-      setMsgs((m) => [...m, { role: "inme", text: t.fail, theme: null, ref: null }]);
+      convo.append({ role: "bot", text: t.fail, theme: null, ref: null });
     } finally {
       setBusy(false);
     }
-  };
+  }
 
   const themeLabel = (key: string) => themeByKey(key)?.label[lang] ?? key;
   const prompts = themeByKey(picked)?.prompts[lang] ?? [];
+  const shownVideos = stream === "all" ? VIDEOS : VIDEOS.filter((v) => v.stream === stream);
 
-  /* Fiche jointe : le verset cite par la reponse d'abord, puis la video. */
   function Attach({ themeKey, citedRef, label }: { themeKey: string; citedRef: string | null; label: string }) {
     const th = themeByKey(themeKey);
     if (!th) return null;
     const cited = th.verses.find((v) => v.ref === citedRef) ?? th.verses[DAY() % th.verses.length];
-    const v = videoFor(themeKey);
+    const vids = videosFor(themeKey);
     const search = SEARCHES[themeKey];
+    /* Un lieu ou l'on peut se presenter, et un service d'ecoute. Ils tournent
+       d'un jour a l'autre pour ne pas toujours envoyer au meme endroit. */
+    const places = [IN_CHAT[DAY() % IN_CHAT.length], HELP[DAY() % HELP.length]].filter(Boolean);
+
     return (
       <div className="attach">
         <div className="attach-head">
@@ -242,14 +254,42 @@ export default function Page() {
             <p style={{ fontSize: "1.12rem" }}>{verseText(cited, lang)}</p>
             <cite>{cited.ref}</cite>
           </blockquote>
-          {v && (
+
+          {vids.length > 0 && (
             <div>
               <p className="suggest-label">{t.attachVideo}</p>
               <div className="videos" style={{ gridTemplateColumns: "1fr" }}>
-                <VideoCard v={v} lang={lang} play={t.play} />
+                {vids.map((v) => (
+                  <VideoCard key={v.id} v={v} play={t.play} />
+                ))}
               </div>
             </div>
           )}
+
+          {places.length > 0 && (
+            <>
+              <hr className="attach-sep" />
+              <div>
+                <p className="suggest-label">{t.attachTalk}</p>
+                <div className="talk">
+                  {places.map((c) => (
+                    <div className="talk-item" key={c.url}>
+                      <b>{c.name}</b>
+                      <span>
+                        {c.kind}, {c.city}
+                        {c.phone ? `, ${c.phone}` : ""}
+                      </span>
+                      <span style={{ fontSize: ".88rem", color: "var(--ink-2)" }}>{c.note[lang]}</span>
+                      <a href={c.url} target="_blank" rel="noopener noreferrer">
+                        {domainOf(c.url)}
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+
           {search && (
             <a
               className="btn btn-gold btn-sm"
@@ -266,19 +306,29 @@ export default function Page() {
     );
   }
 
-  const [stream, setStream] = useState<string>("all");
-  const shownVideos = stream === "all" ? VIDEOS : VIDEOS.filter((v) => v.stream === stream);
-
   return (
     <>
       <nav className="nav">
         <div className="wrap nav-in">
-          <a className="brand" href="#top">
-            inme<span>In Me, In You</span>
-          </a>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 12 }}>
+            <button
+              className="btn btn-soft btn-sm side-toggle"
+              onClick={() => setDrawer((v) => !v)}
+              aria-label={t.menu}
+              aria-expanded={drawer}
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <a className="brand" href="#top" style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+              <Logo size={32} />
+              inme<span>In Me, In You</span>
+            </a>
+          </span>
           <div className="nav-links">
-            <a href="#conversation">{t.chatTitle}</a>
             <a href="#toriteny">{t.sermonsTitle}</a>
+            <a href="#parler">{t.talkTitle}</a>
           </div>
           <div className="langs" role="group" aria-label="Langue">
             {(["fr", "mg", "en"] as Lang[]).map((l) => (
@@ -290,146 +340,135 @@ export default function Page() {
         </div>
       </nav>
 
-      <main id="top">
-        <header className="section wrap rise" style={{ borderTop: "none" }}>
-          <div
-            className="hero-grid"
-            style={{ display: "grid", gap: "clamp(24px, 4vw, 52px)", gridTemplateColumns: "minmax(0, 1.3fr) minmax(0, 1fr)", alignItems: "center" }}
-          >
-            <div>
-              <h1>{t.tagline}</h1>
-              <p className="lead" style={{ marginTop: 18 }}>
-                {t.lead}
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 26 }}>
-                <a className="btn" href="#conversation">
-                  {t.start}
-                </a>
-                <a className="btn btn-soft" href="#toriteny">
-                  {t.listen}
-                </a>
-              </div>
-            </div>
-            <div className="panel panel-tint">
-              <div className="kicker">
-                <b>01</b>
-                {t.verseOfDay}
-              </div>
-              <blockquote className="verse">
-                <p>{verseText(passage, lang)}</p>
-                <cite>{passage.ref}</cite>
-              </blockquote>
+      <div className="app" id="top">
+        <Sidebar
+          list={convo.list}
+          currentId={convo.currentId}
+          open={drawer}
+          onClose={() => setDrawer(false)}
+          onNew={() => {
+            convo.start();
+            setDrawer(false);
+          }}
+          onOpen={(id) => {
+            convo.open(id);
+            setDrawer(false);
+          }}
+          onRemove={convo.remove}
+          labels={{ newChat: t.newChat, history: t.history, empty: t.sideEmpty, del: t.del, close: t.close }}
+          links={[
+            { href: "#toriteny", label: t.sermonsTitle },
+            { href: "#parler", label: t.talkTitle },
+            { href: "#sources", label: t.sources },
+          ]}
+        />
+
+        <div className="pane">
+          <div className="thread" ref={threadRef}>
+            <div className="thread-in">
+              {turns.length === 0 ? (
+                <>
+                  <div className="intro">
+                    <h1>{t.tagline}</h1>
+                    <p className="lead">{t.lead}</p>
+                    <div className="intro-card">
+                      <Logo size={54} />
+                      <blockquote className="verse" style={{ minWidth: 0 }}>
+                        <p style={{ fontSize: "1.14rem" }}>{verseText(passage, lang)}</p>
+                        <cite>
+                          {t.verseOfDay}, {passage.ref}
+                        </cite>
+                      </blockquote>
+                    </div>
+                  </div>
+                  <div className="msg msg-ai">{t.welcome}</div>
+                  <Attach themeKey={picked} citedRef={null} label={t.example} />
+                </>
+              ) : (
+                turns.map((m: Turn, i: number) =>
+                  m.role === "you" ? (
+                    <div key={i} className="msg msg-you">
+                      {m.text}
+                    </div>
+                  ) : (
+                    <div key={i} style={{ display: "contents" }}>
+                      <div className="msg msg-ai">{m.text}</div>
+                      {m.theme && <Attach themeKey={m.theme} citedRef={m.ref ?? null} label={t.attach} />}
+                    </div>
+                  )
+                )
+              )}
+              {busy && (
+                <span className="typing">
+                  {t.thinking}
+                  <span aria-hidden="true">...</span>
+                </span>
+              )}
             </div>
           </div>
-        </header>
 
-        <section className="section section-tint" id="conversation">
-          <div className="wrap">
-            <div className="narrow" style={{ textAlign: "center", marginBottom: "clamp(26px, 4vh, 40px)" }}>
-              <div className="kicker" style={{ justifyContent: "center" }}>
-                <b>02</b>
-                {t.chatTitle}
+          <div className="suggest">
+            <div className="suggest-in">
+              <p className="suggest-label">{t.pickTheme}</p>
+              <div className="chips">
+                {THEMES.map((x) => (
+                  <button key={x.key} className="chip" aria-pressed={picked === x.key} onClick={() => setPicked(x.key)}>
+                    {x.label[lang]}
+                  </button>
+                ))}
               </div>
-              <h2>{t.chatSub}</h2>
-              <p className="lead" style={{ marginTop: 12, marginInline: "auto" }}>
-                {t.chatHint}
+              <p className="suggest-label" style={{ marginTop: 16 }}>
+                {t.pickPrompt}
               </p>
+              <div className="prompts">
+                {prompts.map((p) => (
+                  <button key={p} className="prompt" onClick={() => void send(p)} disabled={busy}>
+                    {p}
+                  </button>
+                ))}
+              </div>
             </div>
+          </div>
 
-            <div className="chat">
-              <div className="chat-head">
-                <b>{t.chatName}</b>
-                <span className="muted">{t.chatStatus}</span>
-              </div>
-
-              <div className="thread" ref={threadRef}>
-                {msgs.length === 0 ? (
-                  <>
-                    <div className="msg msg-inme">{t.welcome}</div>
-                    <Attach themeKey={picked} citedRef={null} label={t.example} />
-                  </>
-                ) : (
-                  msgs.map((m, i) =>
-                    m.role === "you" ? (
-                      <div key={i} className="msg msg-you">
-                        {m.text}
-                      </div>
-                    ) : (
-                      <div key={i} style={{ display: "contents" }}>
-                        <div className="msg msg-inme">{m.text}</div>
-                        {m.theme && <Attach themeKey={m.theme} citedRef={m.ref} label={t.attach} />}
-                      </div>
-                    )
-                  )
-                )}
-                {busy && (
-                  <span className="typing">
-                    {t.thinking}
-                    <span aria-hidden="true">...</span>
-                  </span>
-                )}
-              </div>
-
-              <div className="suggest">
-                <p className="suggest-label">{t.pickTheme}</p>
-                <div className="chips">
-                  {THEMES.map((x) => (
-                    <button key={x.key} className="chip" aria-pressed={picked === x.key} onClick={() => setPicked(x.key)}>
-                      {x.label[lang]}
-                    </button>
-                  ))}
-                </div>
-                <p className="suggest-label" style={{ marginTop: 18 }}>
-                  {t.pickPrompt}
-                </p>
-                <div className="prompts">
-                  {prompts.map((p) => (
-                    <button key={p} className="prompt" onClick={() => void send(p)} disabled={busy}>
-                      {p}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="chat-foot">
-                <form
-                  className="chat-form"
-                  onSubmit={(e) => {
+          <div className="chat-foot">
+            <form
+              className="chat-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                void send();
+              }}
+            >
+              <textarea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
                     void send();
-                  }}
-                >
-                  <textarea
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault();
-                        void send();
-                      }
-                    }}
-                    placeholder={t.placeholder}
-                    maxLength={1500}
-                    rows={2}
-                    aria-label={t.placeholder}
-                  />
-                  <button className="btn send" type="submit" disabled={busy || !input.trim()} aria-label={t.send}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M12 19V5" />
-                      <path d="m5 12 7-7 7 7" />
-                    </svg>
-                  </button>
-                </form>
-              </div>
-            </div>
+                  }
+                }}
+                placeholder={t.placeholder}
+                maxLength={1500}
+                rows={2}
+                aria-label={t.placeholder}
+              />
+              <button className="btn send" type="submit" disabled={busy || !input.trim()} aria-label={t.send}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 19V5" />
+                  <path d="m5 12 7-7 7 7" />
+                </svg>
+              </button>
+            </form>
           </div>
-        </section>
+        </div>
+      </div>
 
+      <main>
         <section className="section" id="toriteny">
           <div className="wrap">
             <div className="head">
               <div className="kicker">
-                <b>03</b>
+                <b>{VIDEOS.length}</b>
                 {t.sermonsTitle}
               </div>
               <h2>
@@ -457,7 +496,7 @@ export default function Page() {
 
             <div className="videos">
               {shownVideos.map((v) => (
-                <VideoCard key={v.id} v={v} lang={lang} play={t.play} />
+                <VideoCard key={v.id} v={v} play={t.play} />
               ))}
             </div>
 
@@ -474,7 +513,39 @@ export default function Page() {
           </div>
         </section>
 
-        <footer className="foot">
+        {CONTACTS.length > 0 && (
+          <section className="section section-tint" id="parler">
+            <div className="wrap">
+              <div className="head">
+                <div className="kicker">
+                  <b>{CONTACTS.length}</b>
+                  {t.talkTitle}
+                </div>
+                <h2>{t.talkTitle}</h2>
+                <p className="lead" style={{ marginTop: 12 }}>
+                  {t.talkLead}
+                </p>
+              </div>
+              <div className="grid grid-2">
+                {CONTACTS.map((c) => (
+                  <div className="panel" key={c.url}>
+                    <h3 style={{ marginBottom: 8 }}>{c.name}</h3>
+                    <p className="muted" style={{ marginBottom: 10 }}>
+                      {c.kind}, {c.city}
+                      {c.phone ? `, ${c.phone}` : ""}
+                    </p>
+                    <p style={{ fontSize: ".93rem", marginBottom: 14 }}>{c.note[lang]}</p>
+                    <a className="btn btn-sm" href={c.url} target="_blank" rel="noreferrer noopener" style={{ maxWidth: "100%" }}>
+                      {domainOf(c.url)}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <footer className="foot" id="sources">
           <div className="wrap">
             <div className="foot-grid">
               <div>
@@ -491,18 +562,11 @@ export default function Page() {
               </div>
             </div>
             <p style={{ fontFamily: "var(--font-mono)", fontSize: ".74rem" }}>
-              {VIDEOS.length}{" "}
-              {lang === "mg" ? "horonan-tsary" : lang === "en" ? "videos" : "vidéos"}, {media.checkedAt}.
+              {VIDEOS.length} {lang === "mg" ? "horonan-tsary" : lang === "en" ? "videos" : "vidéos"}, {media.checkedAt}.
             </p>
           </div>
         </footer>
       </main>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .hero-grid { grid-template-columns: minmax(0, 1fr) !important; }
-        }
-      `}</style>
     </>
   );
 }

@@ -5,6 +5,20 @@ import versesData from "@/data/verses.json";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+/* L'historique recent voyage avec la question : sans lui le modele resalue a
+   chaque tour et perd le fil de ce qui vient d'etre dit. */
+type Turn = { role: "user" | "assistant"; content: string };
+
+function cleanHistory(raw: unknown): Turn[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter((t): t is Turn => !!t && typeof t === "object" && (t as Turn).role !== undefined)
+    .filter((t) => t.role === "user" || t.role === "assistant")
+    .map((t) => ({ role: t.role, content: String(t.content ?? "").slice(0, 1200) }))
+    .filter((t) => t.content.trim().length > 0)
+    .slice(-8);
+}
+
 const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
 const LANGS = ["fr", "mg", "en"] as const;
 type Lang = (typeof LANGS)[number];
@@ -32,7 +46,9 @@ const RULES = `
 Ce que tu ecris :
 - Tu accueilles la personne en une phrase, tu reprends ce qu'elle porte avec ses mots, tu offres une lecture spirituelle courte, puis un geste simple pour aujourd'hui : une priere breve, un appel a passer, une chose a poser.
 - Deux cents mots au maximum, en texte suivi.
-- Pas d'emoji, pas de tiret cadratin, pas de puce, pas de titre, pas d'asterisque.
+- Tu salues UNIQUEMENT au tout premier message. Si l'echange a deja commence, tu enchaines directement.
+- Un ou deux emoji au maximum, poses au fil du texte, jamais en debut de phrase.
+- Pas de tiret cadratin, pas de puce, pas de titre, pas d'asterisque.
 - Aucun conseil medical, juridique ou financier. Devant une detresse grave, tu invites doucement a parler a une personne de confiance ou a un service d'ecoute, sans dramatiser.
 - Tu ne promets ni guerison, ni richesse, ni miracle.
 - Tu signes Inme sur la derniere ligne du texte.
@@ -92,7 +108,7 @@ function extract(text: string) {
 }
 
 export async function POST(req: Request) {
-  let body: { message?: string; lang?: string } = {};
+  let body: { message?: string; lang?: string; history?: unknown } = {};
   try {
     body = await req.json();
   } catch {
@@ -101,6 +117,7 @@ export async function POST(req: Request) {
 
   const message = (body.message || "").trim().slice(0, 1500);
   const lang: Lang = (LANGS as readonly string[]).includes(body.lang || "") ? (body.lang as Lang) : "fr";
+  const history = cleanHistory(body.history);
 
   if (!message) return NextResponse.json({ error: EMPTY[lang] }, { status: 400 });
 
@@ -109,7 +126,7 @@ export async function POST(req: Request) {
     const r = await fetch(`${BACKEND_URL}/process`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, lang }),
+      body: JSON.stringify({ message, lang, history }),
       cache: "no-store",
     });
     if (r.ok) {
@@ -137,6 +154,7 @@ export async function POST(req: Request) {
     const { text, model } = await chat(
       [
         { role: "system", content: PROMPTS[lang] },
+        ...history,
         { role: "user", content: message },
       ],
       700

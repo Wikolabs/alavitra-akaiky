@@ -7,11 +7,11 @@ Deux garde-fous tiennent tout le reste :
    Baiboly Malagasy 1865). Un modèle qui écrit lui-même le verset finit par en
    inventer un, ce qui est inacceptable ici.
 2. la réponse est nettoyée avant d'être renvoyée : ni tiret cadratin, ni puce,
-   ni titre markdown.
+   ni titre markdown. Les emoji, eux, sont permis avec parcimonie.
 """
 import re
 from datetime import datetime, timezone
-from typing import Literal, Optional
+from typing import List, Literal, Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -57,7 +57,9 @@ _RULES = f"""
 Ce que tu écris :
 - Tu accueilles la personne en une phrase, tu reprends ce qu'elle porte avec ses mots, tu offres une lecture spirituelle courte, puis un geste simple pour aujourd'hui : une prière brève, un appel à passer, une chose à poser.
 - Deux cents mots au maximum, en texte suivi.
-- Pas d'emoji, pas de tiret cadratin, pas de puce, pas de titre, pas d'astérisque.
+- Tu salues UNIQUEMENT au tout premier message de la conversation. Si l'échange a déjà commencé, tu enchaînes directement, sans bonjour ni formule d'accueil.
+- Un ou deux emoji au maximum dans toute la réponse, posés au fil du texte, jamais en début de phrase, jamais en rafale. Ils accompagnent, ils ne décorent pas.
+- Pas de tiret cadratin, pas de puce, pas de titre, pas d'astérisque.
 - Aucun conseil médical, juridique ou financier. Devant une détresse grave, tu invites doucement à parler à une personne de confiance ou à un service d'écoute, sans dramatiser.
 - Tu ne promets ni guérison, ni richesse, ni miracle.
 - Tu n'appelles jamais la personne par un prénom : tu ne connais pas son nom, et un mot de son message n'en est pas un.
@@ -87,9 +89,17 @@ SYSTEM_EN = f"""You are Inme, a Christian spiritual companion. You listen first,
 PROMPTS = {"fr": SYSTEM_FR, "mg": SYSTEM_MG, "en": SYSTEM_EN}
 
 
+class Turn(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str
+
+
 class GenerateRequest(BaseModel):
     message: str
     lang: Literal["fr", "mg", "en"] = "fr"
+    # Les derniers échanges, pour que le modèle sache qu'il a déjà salué et
+    # qu'il puisse reprendre ce qui a été dit. Tronqué côté serveur.
+    history: List[Turn] = []
 
 
 class GenerateResponse(BaseModel):
@@ -158,13 +168,14 @@ async def process(req: GenerateRequest) -> GenerateResponse:
         return GenerateResponse(reply=reply, theme=theme, ref=ref, model="static", generated_at=now_iso, static_mode=True)
 
     try:
-        text, model = await chat(
-            [
-                {"role": "system", "content": PROMPTS.get(req.lang, SYSTEM_FR)},
-                {"role": "user", "content": message},
-            ],
-            max_tokens=700,
-        )
+        messages = [{"role": "system", "content": PROMPTS.get(req.lang, SYSTEM_FR)}]
+        for turn in req.history[-8:]:
+            content = (turn.content or "").strip()[:1200]
+            if content:
+                messages.append({"role": turn.role, "content": content})
+        messages.append({"role": "user", "content": message})
+
+        text, model = await chat(messages, max_tokens=700)
     except Exception:
         reply, theme, ref = _static_reply(req.lang)
         return GenerateResponse(reply=reply, theme=theme, ref=ref, model="static", generated_at=now_iso, static_mode=True)

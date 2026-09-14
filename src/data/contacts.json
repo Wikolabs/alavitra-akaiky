@@ -1,0 +1,126 @@
+{
+  "note": "Uniquement des organisations qui publient elles-memes leurs coordonnees sur leur propre site. Aucun numero personnel, aucune adresse privee, aucun individu. Chaque page a ete ouverte et lue avant d'etre inscrite ici.",
+  "checkedAt": "2026-09-14",
+  "warning": "Le domaine arozaza.mg, encore cite par des annuaires internationaux comme portail malgache de protection de l'enfance, sert aujourd'hui un site de jeux d'argent. Il ne doit jamais etre lie. Seul le numero 147 reste valable.",
+  "places": [
+    {
+      "name": "FJKM, Fiangonan'i Jesoa Kristy eto Madagasikara",
+      "kind": "Église, organe national",
+      "city": "Analakely, Antananarivo",
+      "url": "https://www.fjkm.mg/fifandraisana/",
+      "phone": "034 99 292 82",
+      "note": {
+        "fr": "Le siège national publie ses coordonnées et oriente vers la paroisse la plus proche de chez vous.",
+        "mg": "Mamoaka ny antsipirihany momba azy ny foibe, ary manondro ny fiangonana akaiky indrindra anao.",
+        "en": "The national office publishes its contact details and points you to the parish nearest you."
+      },
+      "inChat": true
+    },
+    {
+      "name": "Conférence Épiscopale de Madagascar",
+      "kind": "Conférence épiscopale catholique",
+      "city": "Antanimena, Antananarivo",
+      "url": "https://eglisecatholique.mg/",
+      "phone": "+261 20 22 204 78",
+      "note": {
+        "fr": "Le site officiel de l'Église catholique à Madagascar, avec l'annuaire de tous les diocèses.",
+        "mg": "Ny tranonkala ofisialin'ny Fiangonana Katolika eto Madagasikara, misy ny lisitry ny diosezy rehetra.",
+        "en": "The official site of the Catholic Church in Madagascar, with the directory of every diocese."
+      },
+      "inChat": true
+    },
+    {
+      "name": "Archidiocèse d'Antananarivo",
+      "kind": "Archidiocèse catholique, 714 paroisses",
+      "city": "Antananarivo",
+      "url": "https://eglisecatholique.mg/index.php?action=VoirDioceseDetails&id=35&slug=diocese-antananarivo",
+      "phone": "+261 20 22 205 31",
+      "note": {
+        "fr": "La fiche officielle de l'archidiocèse, pour trouver une paroisse et demander à rencontrer un prêtre.",
+        "mg": "Ny pejy ofisialin'ny arsidiosezy, hitadiavana paroasy sy hangatahana hihaona amin'ny pretra.",
+        "en": "The archdiocese's official entry, to find a parish and ask to meet a priest."
+      },
+      "inChat": true
+    },
+    {
+      "name": "FJKM Antso Mahatoky Fenoarivo",
+      "kind": "Paroisse",
+      "city": "Fenoarivo, Antananarivo Atsimondrano",
+      "url": "https://fjkm.fenoarivo.org/",
+      "phone": "+261 33 14 690 29",
+      "note": {
+        "fr": "Une paroisse qui publie ses horaires de culte et son numéro, culte le dimanche à neuf heures.",
+        "mg": "Fiangonana mamoaka ny ora fanompoam-pivavahana sy ny laharany, alahady amin'ny sivy ora.",
+        "en": "A parish that publishes its service times and phone, Sunday worship at nine."
+      },
+      "inChat": true
+    },
+    {
+      "name": "FJKM Ankadifotsy",
+      "kind": "Paroisse",
+      "city": "Ankadifotsy, Antananarivo",
+      "url": "https://www.fjkm-ankadifotsy.mg/",
+      "phone": "",
+      "note": {
+        "fr": "Une paroisse du centre d'Antananarivo, à contacter par écrit depuis son site.",
+        "mg": "Fiangonana eo afovoan'Antananarivo, azo ifandraisana an-tsoratra avy amin'ny tranonkalany.",
+        "en": "A parish in central Antananarivo, reachable in writing from its site."
+      },
+      "inChat": false
+    },
+    {
+      "name": "Diocèse anglican d'Antananarivo",
+      "kind": "Diocèse, Eklesia Episkopaly Malagasy",
+      "city": "Ambohimanoro, Antananarivo",
+      "url": "https://www.anglicancommunion.org/diocese/antananarivo/",
+      "phone": "+261 20 222 0827",
+      "note": {
+        "fr": "La fiche du diocèse anglican, publiée par la Communion anglicane elle-même.",
+        "mg": "Ny pejin'ny diosezy anglikanina, navoakan'ny Communion anglicane mihitsy.",
+        "en": "The Anglican diocese entry, published by the Anglican Communion itself."
+      },
+      "inChat": false
+    }
+  ],
+  "help": [
+    {
+      "name": "Ligne verte 147",
+      "kind": "Ligne d'écoute, protection de l'enfance, gratuite, jour et nuit",
+      "city": "Tout Madagascar",
+      "url": "https://childhelplineinternational.org/madagascar-ligne-verte-147-madagascar/",
+      "phone": "147",
+      "note": {
+        "fr": "Composez le 147 depuis Madagascar. Gratuit, sept jours sur sept, des professionnels formés répondent.",
+        "mg": "Tsindrio ny 147 avy eto Madagasikara. Maimaim-poana, isan'andro, olona nahazo fiofanana no mamaly.",
+        "en": "Dial 147 from Madagascar. Free, seven days a week, answered by trained professionals."
+      },
+      "inChat": true
+    },
+    {
+      "name": "CHUSMA Anjanamasina",
+      "kind": "Hôpital public de santé mentale",
+      "city": "Ambohidratrimo, près d'Antananarivo",
+      "url": "https://chusma.mg/",
+      "phone": "+261 38 58 119 83",
+      "note": {
+        "fr": "Consultations psychiatriques et psychologiques, accueil d'urgence, unités adultes et adolescents.",
+        "mg": "Fitsaboana ara-tsaina sy ara-psikolojia, fandraisana maika, sampana ho an'ny olon-dehibe sy tanora.",
+        "en": "Psychiatric and psychological consultations, emergency intake, adult and adolescent units."
+      },
+      "inChat": true
+    },
+    {
+      "name": "Ordre National des Psychologues de Madagascar",
+      "kind": "Annuaire public des psychologues inscrits",
+      "city": "Faravohitra, Antananarivo",
+      "url": "https://ordrepsy.mg/",
+      "phone": "+261 34 72 168 43",
+      "note": {
+        "fr": "Un annuaire par région, pour vérifier qu'un psychologue est bien inscrit avant de le consulter.",
+        "mg": "Lisitra isam-paritra, hanamarinana fa voasoratra ara-dalana ilay psikolojista alohan'ny hanatonana azy.",
+        "en": "A directory by region, to check a psychologist is properly registered before consulting them."
+      },
+      "inChat": true
+    }
+  ]
+}

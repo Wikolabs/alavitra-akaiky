@@ -33,8 +33,8 @@
       ],
       "prompts": {
         "fr": [
-          "J'ai peur de ce qui m'attend et je n'arrive plus a dormir.",
-          "Une echeance approche et l'angoisse me serre la poitrine.",
+          "J'ai peur de ce qui m'attend et je n'arrive plus à dormir.",
+          "Une échéance approche et l'angoisse me serre la poitrine.",
           "J'ai peur pour quelqu'un que j'aime et je ne peux rien faire."
         ],
         "mg": [
@@ -81,8 +81,8 @@
       "prompts": {
         "fr": [
           "J'ai perdu quelqu'un et je ne sais pas comment continuer.",
-          "Tout le monde a repris sa vie, moi je suis reste au jour de l'enterrement.",
-          "Je n'arrive plus a prier depuis ce deces."
+          "Tout le monde a repris sa vie, moi je suis resté au jour de l'enterrement.",
+          "Je n'arrive plus à prier depuis ce décès."
         ],
         "mg": [
           "Namoy olon-tiana aho ka tsy hitako izay hanohizana.",
@@ -122,9 +122,9 @@
       ],
       "prompts": {
         "fr": [
-          "Je me sens seul meme au milieu des autres.",
-          "Je viens de demenager et je ne connais personne ici.",
-          "Personne ne m'a appele depuis des semaines."
+          "Je me sens seul même au milieu des autres.",
+          "Je viens de déménager et je ne connais personne ici.",
+          "Personne ne m'a appelé depuis des semaines."
         ],
         "mg": [
           "Manirery aho na dia eo afovoan'ny olona aza.",
@@ -164,9 +164,9 @@
       ],
       "prompts": {
         "fr": [
-          "Je suis a bout, je n'ai plus de force pour rien.",
-          "Je travaille sans arret et rien n'avance.",
-          "Je me leve deja fatigue et la journee n'a pas commence."
+          "Je suis à bout, je n'ai plus de force pour rien.",
+          "Je travaille sans arrêt et rien n'avance.",
+          "Je me lève déjà fatigué et la journée n'a pas commencé."
         ],
         "mg": [
           "Reraka tanteraka aho, tsy manan-kery intsony na ho amin'inona.",
@@ -206,7 +206,7 @@
       ],
       "prompts": {
         "fr": [
-          "Je n'arrive plus a couvrir la fin du mois.",
+          "Je n'arrive plus à couvrir la fin du mois.",
           "J'ai perdu mon travail et je n'ose pas le dire chez moi.",
           "Une dette me suit et j'ai honte d'en parler."
         ],
@@ -248,9 +248,9 @@
       ],
       "prompts": {
         "fr": [
-          "Ma famille se dechire et je suis au milieu.",
+          "Ma famille se déchire et je suis au milieu.",
           "Mon enfant ne me parle plus.",
-          "Je n'arrive plus a pardonner a un proche."
+          "Je n'arrive plus à pardonner à un proche."
         ],
         "mg": [
           "Mifamotsitra ny fianakaviako ary izaho no eo afovoany.",
@@ -290,9 +290,9 @@
       ],
       "prompts": {
         "fr": [
-          "Je suis malade depuis longtemps et l'esperance s'use.",
-          "Quelqu'un que j'aime est a l'hopital et j'ai peur.",
-          "Les resultats arrivent bientot et je n'ose pas y penser."
+          "Je suis malade depuis longtemps et l'espérance s'use.",
+          "Quelqu'un que j'aime est à l'hôpital et j'ai peur.",
+          "Les résultats arrivent bientôt et je n'ose pas y penser."
         ],
         "mg": [
           "Efa ela aho no marary ary mihalany ny fanantenana.",
@@ -332,8 +332,8 @@
       ],
       "prompts": {
         "fr": [
-          "J'ai fait du mal a quelqu'un et je ne sais pas comment revenir.",
-          "On m'a blesse et je n'arrive pas a lacher.",
+          "J'ai fait du mal à quelqu'un et je ne sais pas comment revenir.",
+          "On m'a blessé et je n'arrive pas à lâcher.",
           "Je me sens coupable de quelque chose de vieux."
         ],
         "mg": [
@@ -375,8 +375,8 @@
       "prompts": {
         "fr": [
           "Je ne sais plus si Dieu m'entend.",
-          "Je crois et je doute en meme temps, c'est fatigant.",
-          "J'ai arrete de prier sans decider de le faire."
+          "Je crois et je doute en même temps, c'est fatigant.",
+          "J'ai arrêté de prier sans décider de le faire."
         ],
         "mg": [
           "Tsy fantatro intsony raha mihaino ahy Andriamanitra.",
@@ -416,7 +416,7 @@
       ],
       "prompts": {
         "fr": [
-          "Je suis en colere et j'ai peur de ce que je pourrais dire.",
+          "Je suis en colère et j'ai peur de ce que je pourrais dire.",
           "Une injustice me ronge depuis des mois.",
           "Je m'emporte sur mes proches sans le vouloir."
         ],
@@ -460,7 +460,7 @@
         "fr": [
           "Je dois choisir et j'ai peur de me tromper.",
           "On m'offre quelque chose de bien mais je ne le sens pas.",
-          "Je remets la meme decision depuis des mois."
+          "Je remets la même décision depuis des mois."
         ],
         "mg": [
           "Tsy maintsy misafidy aho nefa matahotra ny hanao diso.",
@@ -500,9 +500,9 @@
       ],
       "prompts": {
         "fr": [
-          "Quelque chose de bon m'est arrive et je veux rendre grace.",
-          "Je veux apprendre a voir ce qui va bien.",
-          "Je sors d'une periode dure et je respire enfin."
+          "Quelque chose de bon m'est arrivé et je veux rendre grâce.",
+          "Je veux apprendre à voir ce qui va bien.",
+          "Je sors d'une période dure et je respire enfin."
         ],
         "mg": [
           "Nisy soa nitranga tamiko ary te hisaotra aho.",
