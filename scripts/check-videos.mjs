@@ -1,33 +1,71 @@
-/* Revérifie que chaque message mis en avant vit toujours sur YouTube, et que le
-   nom de chaîne enregistré correspond. Sort en code 1 si un lien est mort, pour
-   que la CI le signale avant qu'un visiteur ne tombe dessus.
+// Revalide chaque video de src/data/media.json contre l'endpoint oEmbed de
+// YouTube. Une video retiree ou passee en prive renvoie 401 ou 404 : le script
+// sort en erreur pour que la CI le signale avant qu'un visiteur ne tombe sur une
+// vignette morte.
+//
+//   node scripts/check-videos.mjs          verifie les liens
+//   node scripts/check-videos.mjs --sync   reecrit titres et chaines depuis YouTube
 
-   Usage : node scripts/check-videos.mjs
-*/
-import { readFileSync } from "node:fs";
+import { readFile, writeFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
 
-const data = JSON.parse(readFileSync("src/data/sermons.json", "utf8"));
-let dead = 0;
+const here = dirname(fileURLToPath(import.meta.url));
+const dataPath = join(here, "..", "src", "data", "media.json");
+const sync = process.argv.includes("--sync");
 
-for (const v of data.featured) {
-  const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${v.id}&format=json`;
+const data = JSON.parse(await readFile(dataPath, "utf8"));
+
+async function probe(id) {
+  const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
+  const r = await fetch(url, { headers: { "User-Agent": "imahay-link-check/1.0" } });
+  if (!r.ok) return { ok: false, status: r.status };
+  const j = await r.json();
+  return { ok: true, title: j.title, channel: j.author_name };
+}
+
+const dead = [];
+let drifted = 0;
+
+for (const v of data.videos) {
+  let res;
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(String(res.status));
-    const j = await res.json();
-    const same = j.author_name?.toLowerCase().startsWith(v.channel.toLowerCase().slice(0, 12));
-    console.log(`${same ? "ok  " : "note"} ${v.id}  ${j.author_name}  ${j.title.slice(0, 60)}`);
+    res = await probe(v.id);
   } catch (e) {
-    dead++;
-    console.error(`MORT ${v.id}  ${v.channel}  ${v.title}  (${e.message})`);
+    res = { ok: false, status: e.message };
+  }
+
+  if (!res.ok) {
+    dead.push(`${v.id}  ${res.status}  ${v.title}`);
+    console.log(`DEAD  ${v.id}  (${res.status})  ${v.title}`);
+    continue;
+  }
+
+  const same = res.title === v.title && res.channel === v.channel;
+  if (!same) {
+    drifted += 1;
+    console.log(`DRIFT ${v.id}`);
+    console.log(`      local  ${v.title} | ${v.channel}`);
+    console.log(`      remote ${res.title} | ${res.channel}`);
+    if (sync) {
+      v.title = res.title;
+      v.channel = res.channel;
+    }
+  } else {
+    console.log(`OK    ${v.id}  ${v.title}`);
   }
 }
 
-for (const c of data.channels) {
-  const res = await fetch(`https://www.youtube.com/channel/${c.id}`, { redirect: "follow" });
-  if (!res.ok) { dead++; console.error(`MORTE ${c.id}  ${c.name}`); }
-  else console.log(`ok   chaîne ${c.name}`);
+if (sync) {
+  data.checkedAt = new Date().toISOString().slice(0, 10);
+  await writeFile(dataPath, JSON.stringify(data, null, 2) + "\n", "utf8");
+  console.log(`\nmedia.json mis a jour, ${drifted} entree(s) corrigee(s).`);
 }
 
-console.log(dead ? `\n${dead} lien(s) à remplacer` : "\ntous les liens vivent");
-process.exit(dead ? 1 : 0);
+console.log(`\n${data.videos.length} video(s), ${dead.length} morte(s), ${drifted} en derive.`);
+
+if (dead.length) {
+  console.error("\nLiens a remplacer :");
+  for (const line of dead) console.error("  " + line);
+  process.exit(1);
+}

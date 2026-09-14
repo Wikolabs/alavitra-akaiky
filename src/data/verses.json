@@ -1,304 +1,520 @@
 {
- "source": "getbible.net v2, Louis Segond 1910 (fr) et Baiboly Malagasy 1865 (mg), domaine public",
- "builtAt": "2026-09-14",
- "themes": [
-  {
-   "key": "peur",
-   "label": {
-    "fr": "Peur et angoisse",
-    "mg": "Tahotra sy tebiteby"
-   },
-   "verses": [
+  "source": "getbible.net v2, Louis Segond 1910 (fr) et Baiboly Malagasy 1865 (mg), domaine public",
+  "builtAt": "2026-09-14",
+  "themes": [
     {
-     "ref": "Ésaïe 41:10",
-     "fr": "Ne crains rien, car je suis avec toi ; Ne promène pas des regards inquiets, car je suis ton Dieu ; Je te fortifie, je viens à ton secours, Je te soutiens de ma droite triomphante.",
-     "mg": "Aza matahotra ianao, fa momba anao Aho; Ary aza miherikerika foana, fa Izaho no Andriamanitrao; Mampahery anao Aho sady mamonjy anao; Eny, mitantana anao amin’ ny tanana ankavanan’ ny fahamarinako Aho."
+      "key": "peur",
+      "label": {
+        "fr": "Peur et angoisse",
+        "mg": "Tahotra sy tebiteby",
+        "en": "Fear and anxiety"
+      },
+      "verses": [
+        {
+          "ref": "Ésaïe 41:10",
+          "fr": "Ne crains rien, car je suis avec toi ; Ne promène pas des regards inquiets, car je suis ton Dieu ; Je te fortifie, je viens à ton secours, Je te soutiens de ma droite triomphante.",
+          "mg": "Aza matahotra ianao, fa momba anao Aho; Ary aza miherikerika foana, fa Izaho no Andriamanitrao; Mampahery anao Aho sady mamonjy anao; Eny, mitantana anao amin’ ny tanana ankavanan’ ny fahamarinako Aho."
+        },
+        {
+          "ref": "Philippiens 4:6-7",
+          "fr": "Ne vous inquiétez de rien ; mais en toute chose faites connaître vos besoins à Dieu par des prières et des supplications, avec des actions de grâces. Et la paix de Dieu, qui surpasse toute intelligence, gardera vos cœurs et vos pensées en Jésus-Christ.",
+          "mg": "Aza manahy na inona na inona; fa aoka ny fivavahana sy ny fifonana mbamin’ ny fisaorana no ho entinareo manambara ny fangatahanareo amin’ Andriamanitra amin’ ny zavatra rehetra. Ary ny fiadanan’ Andriamanitra, izay mihoatra noho ny fahalalana rehetra, hiaro ny fonareo sy ny hevitrareo ao amin’ i Kristy Jesosy."
+        },
+        {
+          "ref": "Jean 14:27",
+          "fr": "Je vous laisse la paix, je vous donne ma paix. Je ne vous donne pas comme le monde donne. Que votre cœur ne se trouble point, et ne s’alarme point.",
+          "mg": "Fiadanana no avelako ho anareo, ny fiadanako no omeko anareo; tsy tahaka ny fanomen’ izao tontolo izao no fanomeko anareo. Aza malahelo na matahotra ny fonareo."
+        },
+        {
+          "ref": "Psaume 56:4",
+          "fr": "Quand je suis dans la crainte, En toi je me confie.",
+          "mg": "Amin’ ny andro atahorako no itokiako Anao."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "J'ai peur de ce qui m'attend et je n'arrive plus a dormir.",
+          "Une echeance approche et l'angoisse me serre la poitrine.",
+          "J'ai peur pour quelqu'un que j'aime et je ne peux rien faire."
+        ],
+        "mg": [
+          "Matahotra izay hitranga aho ka tsy afaka matory intsony.",
+          "Manakaiky ny fe-potoana ary manery ny tratrako ny tebiteby.",
+          "Matahotra ho an'ny olon-tiako aho nefa tsy misy azoko atao."
+        ],
+        "en": [
+          "I am afraid of what is coming and I cannot sleep.",
+          "A deadline is near and the anxiety grips my chest.",
+          "I am afraid for someone I love and I can do nothing."
+        ]
+      }
     },
     {
-     "ref": "Philippiens 4:6-7",
-     "fr": "Ne vous inquiétez de rien ; mais en toute chose faites connaître vos besoins à Dieu par des prières et des supplications, avec des actions de grâces. Et la paix de Dieu, qui surpasse toute intelligence, gardera vos cœurs et vos pensées en Jésus-Christ.",
-     "mg": "Aza manahy na inona na inona; fa aoka ny fivavahana sy ny fifonana mbamin’ ny fisaorana no ho entinareo manambara ny fangatahanareo amin’ Andriamanitra amin’ ny zavatra rehetra. Ary ny fiadanan’ Andriamanitra, izay mihoatra noho ny fahalalana rehetra, hiaro ny fonareo sy ny hevitrareo ao amin’ i Kristy Jesosy."
+      "key": "deuil",
+      "label": {
+        "fr": "Deuil et tristesse",
+        "mg": "Fisaonana sy alahelo",
+        "en": "Grief and loss"
+      },
+      "verses": [
+        {
+          "ref": "Psaume 34:19",
+          "fr": "L’Éternel est près de ceux qui ont le cœur brisé, Et il sauve ceux qui ont l’esprit dans l’abattement.",
+          "mg": "Akaikin’ izay manana fo mangorakoraka Jehovah, ary mamonjy izay torororo fanahy."
+        },
+        {
+          "ref": "Matthieu 5:4",
+          "fr": "Heureux les affligés, car ils seront consolés !",
+          "mg": "Sambatra ny ory; fa izy no hampifalina."
+        },
+        {
+          "ref": "Apocalypse 21:4",
+          "fr": "Il essuiera toute larme de leurs yeux, et la mort ne sera plus, et il n’y aura plus ni deuil, ni cri, ni douleur, car les premières choses ont disparu.",
+          "mg": "Ary hofafany ny ranomaso rehetra amin’ ny masony; ary tsy hisy fahafatesana intsony, sady tsy hisy alahelo, na fitarainana, na fanaintainana; fa efa lasa ny zavatra taloha."
+        },
+        {
+          "ref": "Psaume 147:3",
+          "fr": "Il guérit ceux qui ont le cœur brisé, Et il panse leurs blessures.",
+          "mg": "Mahasitrana ny torotoro fo Izy Sy mamehy ny feriny."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "J'ai perdu quelqu'un et je ne sais pas comment continuer.",
+          "Tout le monde a repris sa vie, moi je suis reste au jour de l'enterrement.",
+          "Je n'arrive plus a prier depuis ce deces."
+        ],
+        "mg": [
+          "Namoy olon-tiana aho ka tsy hitako izay hanohizana.",
+          "Efa niverina tamin'ny fiainany ny rehetra, izaho mbola ao amin'ny andro nandevenana.",
+          "Tsy afaka mivavaka intsony aho hatramin'io fahafatesana io."
+        ],
+        "en": [
+          "I lost someone and I do not know how to keep going.",
+          "Everyone moved on, I am still at the day of the burial.",
+          "I have not been able to pray since that death."
+        ]
+      }
     },
     {
-     "ref": "Jean 14:27",
-     "fr": "Je vous laisse la paix, je vous donne ma paix. Je ne vous donne pas comme le monde donne. Que votre cœur ne se trouble point, et ne s’alarme point.",
-     "mg": "Fiadanana no avelako ho anareo, ny fiadanako no omeko anareo; tsy tahaka ny fanomen’ izao tontolo izao no fanomeko anareo. Aza malahelo na matahotra ny fonareo."
+      "key": "solitude",
+      "label": {
+        "fr": "Solitude",
+        "mg": "Fahirano sy fanirery",
+        "en": "Loneliness"
+      },
+      "verses": [
+        {
+          "ref": "Deutéronome 31:6",
+          "fr": "Fortifiez-vous et ayez du courage ! Ne craignez point et ne soyez point effrayés devant eux ; car l’Éternel, ton Dieu, marchera lui-même avec toi, il ne te délaissera point, il ne t’abandonnera point.",
+          "mg": "Mahereza sy matanjaha; aza matahotra na manahy azy; fa Jehovah Andriamanitrao no miara-mandeha aminao; tsy handao anao na hahafoy anao Izy."
+        },
+        {
+          "ref": "Hébreux 13:5",
+          "fr": "Ne vous livrez pas à l’amour de l’argent ; contentez-vous de ce que vous avez ; car Dieu lui-même a dit : Je ne te délaisserai point, et je ne t’abandonnerai point.",
+          "mg": "Aoka tsy ho amin’ ny fitiavam-bola ny toe-tsainareo, fa mianina amin’ izay anananareo; fa hoy Izy: “Izaho tsy handao anao mihitsy na hahafoy anao akory”."
+        },
+        {
+          "ref": "Psaume 68:7",
+          "fr": "Dieu donne une famille à ceux qui étaient abandonnés, Il délivre les captifs et les rend heureux ; Les rebelles seuls habitent des lieux arides.",
+          "mg": "Andriamanitra mampitoetra an-trano izay irery tena; mamoaka ny mpifatotra ho amin’ ny fanambinana Izy; fa ny maditra hitoetra amin’ ny tany karankaina."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Je me sens seul meme au milieu des autres.",
+          "Je viens de demenager et je ne connais personne ici.",
+          "Personne ne m'a appele depuis des semaines."
+        ],
+        "mg": [
+          "Manirery aho na dia eo afovoan'ny olona aza.",
+          "Vao nifindra monina aho ary tsy misy fantatro eto.",
+          "Tsy nisy niantso ahy nandritra ny herinandro maromaro."
+        ],
+        "en": [
+          "I feel alone even in the middle of other people.",
+          "I just moved and I know nobody here.",
+          "Nobody has called me in weeks."
+        ]
+      }
     },
     {
-     "ref": "Psaume 56:4",
-     "fr": "Quand je suis dans la crainte, En toi je me confie.",
-     "mg": "Amin’ ny andro atahorako no itokiako Anao."
+      "key": "epuisement",
+      "label": {
+        "fr": "Épuisement",
+        "mg": "Fahareraham-po",
+        "en": "Exhaustion"
+      },
+      "verses": [
+        {
+          "ref": "Matthieu 11:28-30",
+          "fr": "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. Prenez mon joug sur vous et recevez mes instructions, car je suis doux et humble de cœur ; et vous trouverez du repos pour vos âmes. Car mon joug est doux, et mon fardeau léger.",
+          "mg": "Mankanesa atỳ amiko, ianareo rehetra izay miasa fatratra sy mavesatra entana, fa Izaho no hanome anareo fitsaharana. Ento ny ziogako, ka mianara amiko; fa malemy fanahy sady tsy miavona am-po Aho; dia hahita fitsaharana ho an’ ny fanahinareo ianareo. Fa mora ny ziogako, ary maivana ny entako."
+        },
+        {
+          "ref": "Ésaïe 40:31",
+          "fr": "Mais ceux qui se confient en l’Éternel renouvellent leur force. Ils prennent le vol comme les aigles ; Ils courent, et ne se lassent point, Ils marchent, et ne se fatiguent point.",
+          "mg": "Fa izay miandry an’ i Jehovah dia mandroso hery kosa; Elatra no hiakarany tahaka ny voromahery; Hihazakazaka izy, nefa tsy ho sasatra; Handeha izy, nefa tsy ho reraka."
+        },
+        {
+          "ref": "Psaume 23:1-4",
+          "fr": "Cantique de David. L’Éternel est mon berger : je ne manquerai de rien. Il me fait reposer dans de verts pâturages, Il me dirige près des eaux paisibles. Il restaure mon âme, Il me conduit dans les sentiers de la justice, À cause de son nom. Quand je marche dans la vallée de l’ombre de la mort, Je ne crains aucun mal, car tu es avec moi : Ta houlette et ton bâton me rassurent.",
+          "mg": "Jehovah no Mpiandry ahy, tsy hanan-java-mahory aho, Mampandry ahy amin’ ny ahi-maitso Izy; mitondra ahy eo amoron’ ny rano fialan-tsasatra Izy. Mamelombelona ny fanahiko Izy; mitarika ahy amin’ ny lalan’ ny fahamarinana noho ny anarany Izy. Eny, na dia mandeha mamaky ny lohasaha aloky ny fahafatesana aza aho, dia tsy hatahotra ny loza aho, fa Hianao no amiko; ny tsorakazonao sy ny tehinao, ireo no mahafa-tahotra ahy."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Je suis a bout, je n'ai plus de force pour rien.",
+          "Je travaille sans arret et rien n'avance.",
+          "Je me leve deja fatigue et la journee n'a pas commence."
+        ],
+        "mg": [
+          "Reraka tanteraka aho, tsy manan-kery intsony na ho amin'inona.",
+          "Miasa tsy an-kijanona aho nefa tsy misy mandroso.",
+          "Efa vizaka aho vao mifoha, nefa mbola tsy nanomboka ny andro."
+        ],
+        "en": [
+          "I am spent, I have no strength left for anything.",
+          "I work without stopping and nothing moves forward.",
+          "I wake already tired and the day has not started."
+        ]
+      }
+    },
+    {
+      "key": "argent",
+      "label": {
+        "fr": "Travail et argent",
+        "mg": "Asa sy vola",
+        "en": "Money and work"
+      },
+      "verses": [
+        {
+          "ref": "Matthieu 6:31-33",
+          "fr": "Ne vous inquiétez donc point, et ne dites pas : Que mangerons-nous ? que boirons-nous ? de quoi serons-nous vêtus ? Car toutes ces choses, ce sont les païens qui les recherchent. Votre Père céleste sait que vous en avez besoin . Cherchez premièrement le royaume et la justice de Dieu ; et toutes ces choses vous seront données par-dessus.",
+          "mg": "Dia aza manahy ianareo ka manao hoe: Inona no hohaninay? na: Inona no hosotroinay? na: Inona no hotafinay? Fa izany rehetra izany dia katsahin’ ny jentilisa fatratra; fa fantatry ny Rainareo Izay any an-danitra fa tokony ho anareo izany rehetra izany. Fa katsaho aloha ny fanjakany sy ny fahamarinany, dia hanampy ho anareo izany rehetra izany."
+        },
+        {
+          "ref": "Philippiens 4:19",
+          "fr": "Et mon Dieu pourvoira à tous vos besoins selon sa richesse, avec gloire, en Jésus-Christ.",
+          "mg": "Fa Andriamanitro hahatanteraka izay rehetra tokony ho anareo araka ny hareny amin’ ny voninahitra no amin’ i Kristy Jesosy."
+        },
+        {
+          "ref": "Proverbes 16:3",
+          "fr": "Recommande à l’Éternel tes œuvres, Et tes projets réussiront.",
+          "mg": "Ankino amin’ i Jehovah ny asanao, Dia ho lavorary izay kasainao."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Je n'arrive plus a couvrir la fin du mois.",
+          "J'ai perdu mon travail et je n'ose pas le dire chez moi.",
+          "Une dette me suit et j'ai honte d'en parler."
+        ],
+        "mg": [
+          "Tsy vitako intsony ny mandrakotra ny faran'ny volana.",
+          "Very asa aho ary tsy sahy milaza izany any an-trano.",
+          "Misy trosa manaraka ahy ary menatra aho hiresaka izany."
+        ],
+        "en": [
+          "I can no longer make it to the end of the month.",
+          "I lost my job and I dare not say it at home.",
+          "A debt follows me and I am ashamed to speak of it."
+        ]
+      }
+    },
+    {
+      "key": "famille",
+      "label": {
+        "fr": "Famille et couple",
+        "mg": "Fianakaviana sy tokantrano",
+        "en": "Family"
+      },
+      "verses": [
+        {
+          "ref": "1 Corinthiens 13:4-7",
+          "fr": "La charité est patiente, elle est pleine de bonté ; la charité n’est point envieuse ; la charité ne se vante point, elle ne s’enfle point d’orgueil, elle ne fait rien de malhonnête, elle ne cherche point son intérêt, elle ne s’irrite point, elle ne soupçonne point le mal, elle ne se réjouit point de l’injustice, mais elle se réjouit de la vérité ; elle excuse tout, elle croit tout, elle espère tout, elle supporte tout.",
+          "mg": "Ny fitiavana mahari-po sady mora fanahy; ny fitiavana tsy mialona, tsy mirehareha, tsy mieboebo, tsy manao izay tsy mahamendrika, tsy mitady ny azy, tsy mora sosotra, tsy manao otri-po, tsy mifaly amin’ ny tsi-fahamarinana, fa miara-mifaly amin’ ny fahamarinana kosa, mandefitra ny zavatra rehetra, mino ny zavatra rehetra, manantena ny zavatra rehetra, maharitra ny zavatra rehetra."
+        },
+        {
+          "ref": "Éphésiens 4:32",
+          "fr": "Soyez bons les uns envers les autres, compatissants, vous pardonnant réciproquement, comme Dieu vous a pardonné en Christ.",
+          "mg": "ary aoka samy halemy fanahy amin’ ny namany avy ianareo, ka hifampiantra sy hifamela heloka, tahaka ny namelan’ Andriamanitra ny helokareo ao amin’ i Kristy."
+        },
+        {
+          "ref": "Colossiens 3:13",
+          "fr": "Supportez-vous les uns les autres, et, si l’un a sujet de se plaindre de l’autre, pardonnez-vous réciproquement. De même que Christ vous a pardonné, pardonnez-vous aussi.",
+          "mg": "Mifandefera, ka mifamelà heloka ianareo, raha misy manana alahelo amin’ ny sasany; tahaka ny namelan’ ny Tompo ny helokareo no aoka mba hamelanareo heloka kosa."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Ma famille se dechire et je suis au milieu.",
+          "Mon enfant ne me parle plus.",
+          "Je n'arrive plus a pardonner a un proche."
+        ],
+        "mg": [
+          "Mifamotsitra ny fianakaviako ary izaho no eo afovoany.",
+          "Tsy miresaka amiko intsony ny zanako.",
+          "Tsy vitako intsony ny mamela heloka olona akaiky."
+        ],
+        "en": [
+          "My family is tearing apart and I am in the middle.",
+          "My child does not speak to me any more.",
+          "I cannot forgive someone close to me."
+        ]
+      }
+    },
+    {
+      "key": "maladie",
+      "label": {
+        "fr": "Maladie",
+        "mg": "Aretina",
+        "en": "Illness"
+      },
+      "verses": [
+        {
+          "ref": "Psaume 103:2-3",
+          "fr": "Mon âme, bénis l’Éternel, Et n’oublie aucun de ses bienfaits ! C’est lui qui pardonne toutes tes iniquités, Qui guérit toutes tes maladies ;",
+          "mg": "Misaora an’ i Jehovah, ry fanahiko; Ary aza misy hadinoinao ny fitahiany rehetra, Izay mamela ny helokao rehetra, Izay manasitrana ny aretinao rehetra,"
+        },
+        {
+          "ref": "Jacques 5:14-15",
+          "fr": "Quelqu’un parmi vous est-il malade ? Qu’il appelle les anciens de l’Église, et que les anciens prient pour lui, en l’oignant d’huile au nom du Seigneur ; la prière de la foi sauvera le malade, et le Seigneur le relèvera ; et s’il a commis des péchés, il lui sera pardonné.",
+          "mg": "Misy marary va eo aminareo? Aoka izy hampaka ny loholon’ ny fiangonana; ary aoka hanosotra diloilo azy amin’ ny anaran’ ny Tompo ireo sady hivavaka eo aminy; ary ny fivavaky ny finoana dia hamonjy ilay marary, fa ny Tompo hanangana azy; ary raha nanota izy, dia havela ny helony."
+        },
+        {
+          "ref": "Ésaïe 53:5",
+          "fr": "Mais il était blessé pour nos péchés, Brisé pour nos iniquités ; Le châtiment qui nous donne la paix est tombé sur lui, Et c’est par ses meurtrissures que nous sommes guéris.",
+          "mg": "Nefa Izy dia voalefona noho ny fahadisoantsika sy notorotoroina noho ny helotsika, ny fampijaliana nahazoantsika fihavanana no namelezana Azy; ary ny dian-kapoka taminy no nahasitranana antsika."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Je suis malade depuis longtemps et l'esperance s'use.",
+          "Quelqu'un que j'aime est a l'hopital et j'ai peur.",
+          "Les resultats arrivent bientot et je n'ose pas y penser."
+        ],
+        "mg": [
+          "Efa ela aho no marary ary mihalany ny fanantenana.",
+          "Ao amin'ny hopitaly ny olon-tiako ary matahotra aho.",
+          "Ho avy tsy ho ela ny valiny ary tsy sahy misaina izany aho."
+        ],
+        "en": [
+          "I have been ill a long time and my hope is wearing thin.",
+          "Someone I love is in hospital and I am afraid.",
+          "Results are coming soon and I dare not think about it."
+        ]
+      }
+    },
+    {
+      "key": "pardon",
+      "label": {
+        "fr": "Faute et pardon",
+        "mg": "Fahotana sy famelan-keloka",
+        "en": "Forgiveness"
+      },
+      "verses": [
+        {
+          "ref": "1 Jean 1:9",
+          "fr": "Si nous confessons nos péchés, il est fidèle et juste pour nous les pardonner, et pour nous purifier de toute iniquité.",
+          "mg": "Raha miaiky ny fahotantsika isika, dia mahatoky sy marina Izy ka mamela ny fahotantsika sy manadio antsika ho afaka amin’ ny tsi-fahamarinana rehetra."
+        },
+        {
+          "ref": "Psaume 103:12",
+          "fr": "Autant l’orient est éloigné de l’occident, Autant il éloigne de nous nos transgressions.",
+          "mg": "Tahaka ny halavitry ny atsinanana amin’ ny andrefana No halavitry ny anesorany ny fahotantsika amintsika."
+        },
+        {
+          "ref": "Romains 8:1",
+          "fr": "Il n’y a donc maintenant aucune condamnation pour ceux qui sont en Jésus-Christ.",
+          "mg": "Ary amin’ izany dia tsy misy fanamelohana ho an’ izay ao amin’ i Kristy Jesosy."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "J'ai fait du mal a quelqu'un et je ne sais pas comment revenir.",
+          "On m'a blesse et je n'arrive pas a lacher.",
+          "Je me sens coupable de quelque chose de vieux."
+        ],
+        "mg": [
+          "Nanisy ratsy olona aho ka tsy hitako izay hiverenana.",
+          "Nisy nandratra ahy ary tsy vitako ny mamela izany.",
+          "Manan-tsiny aho noho ny zavatra efa ela."
+        ],
+        "en": [
+          "I hurt someone and I do not know how to go back.",
+          "I was hurt and I cannot let it go.",
+          "I feel guilty about something old."
+        ]
+      }
+    },
+    {
+      "key": "doute",
+      "label": {
+        "fr": "Doute et foi",
+        "mg": "Fisalasalana sy finoana",
+        "en": "Doubt"
+      },
+      "verses": [
+        {
+          "ref": "Marc 9:24",
+          "fr": "Aussitôt le père de l’enfant s’écria : Je crois ! viens au secours de mon incrédulité !",
+          "mg": "Ary niaraka tamin’ izay dia niantso ny rain-drazazalahy ka nanao hoe: Mino aho; vonjeo mba ho afaka amin’ ny tsi-finoako."
+        },
+        {
+          "ref": "Hébreux 11:1",
+          "fr": "Or la foi est une ferme assurance des choses qu’on espère, une démonstration de celles qu’on ne voit pas.",
+          "mg": "Ary ny finoana no fahatokiana ny amin’ ny zavatra antenaina, fanehoana ny zavatra tsy hita."
+        },
+        {
+          "ref": "Jacques 1:5-6",
+          "fr": "Si quelqu’un d’entre vous manque de sagesse, qu’il la demande à Dieu, qui donne à tous simplement et sans reproche, et elle lui sera donnée. Mais qu’il la demande avec foi, sans douter ; car celui qui doute est semblable au flot de la mer, agité par le vent et poussé de côté et d’autre.",
+          "mg": "Ary raha misy ianareo tsy manam-pahendrena, aoka izy hangataka amin’ Andriamanitra, Izay manome malalaka ho an’ ny olona rehetra sady tsy mandatsa; ary dia homena azy izany. Nefa aoka hangataka amin’ ny finoana izy ka tsy hiahanahana akory; fa izay miahanahana dia toy ny alon-dranomasina entin’ ny rivotra ka atopatopany."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Je ne sais plus si Dieu m'entend.",
+          "Je crois et je doute en meme temps, c'est fatigant.",
+          "J'ai arrete de prier sans decider de le faire."
+        ],
+        "mg": [
+          "Tsy fantatro intsony raha mihaino ahy Andriamanitra.",
+          "Mino sady misalasala aho miaraka, mahareraka izany.",
+          "Nitsahatra nivavaka aho nefa tsy nanapa-kevitra hanao izany."
+        ],
+        "en": [
+          "I no longer know whether God hears me.",
+          "I believe and I doubt at the same time, and it is tiring.",
+          "I stopped praying without ever deciding to."
+        ]
+      }
+    },
+    {
+      "key": "colere",
+      "label": {
+        "fr": "Colère et conflit",
+        "mg": "Fahatezerana sy ady",
+        "en": "Anger"
+      },
+      "verses": [
+        {
+          "ref": "Éphésiens 4:26",
+          "fr": "Si vous vous mettez en colère, ne péchez point ; que le soleil ne se couche pas sur votre colère,",
+          "mg": "Tezera, fa aza manota; ary aoka tsy ho tratry ny masoandro milentika ny fahatezeranareo."
+        },
+        {
+          "ref": "Proverbes 15:1",
+          "fr": "Une réponse douce calme la fureur, Mais une parole dure excite la colère.",
+          "mg": "Ny famaliana mora dia mampianina ny fahatezerana mafy; Fa ny teny maharary mahatonga fahasosorana."
+        },
+        {
+          "ref": "Jacques 1:19",
+          "fr": "Sachez-le, mes frères bien-aimés. Ainsi, que tout homme soit prompt à écouter, lent à parler, lent à se mettre en colère ;",
+          "mg": "Fantatrareo izany, sy rahalahy malalako. Kanefa aoka ny olona rehetra halady hihaino ho malai-miteny, ho malain-ko tezitra;"
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Je suis en colere et j'ai peur de ce que je pourrais dire.",
+          "Une injustice me ronge depuis des mois.",
+          "Je m'emporte sur mes proches sans le vouloir."
+        ],
+        "mg": [
+          "Tezitra aho ary matahotra izay mety holazaiko.",
+          "Misy tsy rariny mandany ahy hatramin'ny volana maro.",
+          "Misafoaka amin'ny akaiky ahy aho nefa tsy tiako izany."
+        ],
+        "en": [
+          "I am angry and afraid of what I might say.",
+          "An injustice has been eating at me for months.",
+          "I snap at the people close to me without meaning to."
+        ]
+      }
+    },
+    {
+      "key": "decision",
+      "label": {
+        "fr": "Décision et direction",
+        "mg": "Fanapahan-kevitra",
+        "en": "Decision"
+      },
+      "verses": [
+        {
+          "ref": "Proverbes 3:5-6",
+          "fr": "Confie-toi en l’Éternel de tout ton cœur, Et ne t’appuie pas sur ta sagesse ; Reconnais-le dans toutes tes voies, Et il aplanira tes sentiers.",
+          "mg": "Matokia an’ i Jehovah amin’ ny fonao rehetra, Fa aza miankina amin’ ny fahalalanao; Maneke Azy amin’ ny alehanao rehetra, Fa Izy handamina ny lalanao,"
+        },
+        {
+          "ref": "Psaume 32:8",
+          "fr": "Je t’instruirai et te montrerai la voie que tu dois suivre ; Je te conseillerai, j’aurai le regard sur toi.",
+          "mg": "Hanome saina anao sy hampianatra anao izay lalan-kalehanao Aho; hitsinjo anao ny masoko ka hanolo-tsaina anao Aho."
+        },
+        {
+          "ref": "Jacques 1:5",
+          "fr": "Si quelqu’un d’entre vous manque de sagesse, qu’il la demande à Dieu, qui donne à tous simplement et sans reproche, et elle lui sera donnée.",
+          "mg": "Ary raha misy ianareo tsy manam-pahendrena, aoka izy hangataka amin’ Andriamanitra, Izay manome malalaka ho an’ ny olona rehetra sady tsy mandatsa; ary dia homena azy izany."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Je dois choisir et j'ai peur de me tromper.",
+          "On m'offre quelque chose de bien mais je ne le sens pas.",
+          "Je remets la meme decision depuis des mois."
+        ],
+        "mg": [
+          "Tsy maintsy misafidy aho nefa matahotra ny hanao diso.",
+          "Misy tolotra tsara natao tamiko nefa tsy mahazo aina aho.",
+          "Efa volana maro no anemorako io fanapahan-kevitra io."
+        ],
+        "en": [
+          "I have to choose and I am afraid of getting it wrong.",
+          "I have a good offer but it does not sit right with me.",
+          "I keep putting off the same decision, month after month."
+        ]
+      }
+    },
+    {
+      "key": "gratitude",
+      "label": {
+        "fr": "Gratitude et joie",
+        "mg": "Fisaorana sy fifaliana",
+        "en": "Gratitude"
+      },
+      "verses": [
+        {
+          "ref": "1 Thessaloniciens 5:16-18",
+          "fr": "Soyez toujours joyeux. Priez sans cesse. Rendez grâces en toutes choses, car c’est à votre égard la volonté de Dieu en Jésus-Christ.",
+          "mg": "Mifalia mandrakariva. Mivavaha, ka aza mitsahatra. Misaora amin’ ny zavatra rehetra; fa izany no sitrapon’ Andriamanitra ao amin’ i Kristy Jesosy ho anareo."
+        },
+        {
+          "ref": "Psaume 118:24",
+          "fr": "C’est ici la journée que l’Éternel a faite : Qu’elle soit pour nous un sujet d’allégresse et de joie !",
+          "mg": "Ity no andro nataon’ i Jehovah; Hifaly sy ho ravoravo amin’ izao isika."
+        },
+        {
+          "ref": "Néhémie 8:10",
+          "fr": "Ils leur dirent : Allez, mangez des viandes grasses et buvez des liqueurs douces, et envoyez des portions à ceux qui n’ont rien de préparé, car ce jour est consacré à notre Seigneur ; ne vous affligez pas, car la joie de l’Éternel sera votre force.",
+          "mg": "Dia hoy izy taminy: Mandehana, hano ny matavy, ary sotroy ny mamy, dia mba anatero anjara izay tsy manan-javatra voavoatra; fa masìna ho an’ ny Tompontsika ity andro ity; koa aza malahelo ianareo, fa ny fifaliana avy amin’ i Jehovah no fiarovana mafy ho anareo."
+        }
+      ],
+      "prompts": {
+        "fr": [
+          "Quelque chose de bon m'est arrive et je veux rendre grace.",
+          "Je veux apprendre a voir ce qui va bien.",
+          "Je sors d'une periode dure et je respire enfin."
+        ],
+        "mg": [
+          "Nisy soa nitranga tamiko ary te hisaotra aho.",
+          "Te hianatra mahita izay mandeha tsara aho.",
+          "Vao avy tamin'ny fotoan-tsarotra aho ary miaina ihany."
+        ],
+        "en": [
+          "Something good happened and I want to give thanks.",
+          "I want to learn to see what is going right.",
+          "I am out of a hard stretch and I can breathe again."
+        ]
+      }
     }
-   ]
-  },
-  {
-   "key": "deuil",
-   "label": {
-    "fr": "Deuil et tristesse",
-    "mg": "Fisaonana sy alahelo"
-   },
-   "verses": [
-    {
-     "ref": "Psaume 34:19",
-     "fr": "L’Éternel est près de ceux qui ont le cœur brisé, Et il sauve ceux qui ont l’esprit dans l’abattement.",
-     "mg": "Akaikin’ izay manana fo mangorakoraka Jehovah, ary mamonjy izay torororo fanahy."
-    },
-    {
-     "ref": "Matthieu 5:4",
-     "fr": "Heureux les affligés, car ils seront consolés !",
-     "mg": "Sambatra ny ory; fa izy no hampifalina."
-    },
-    {
-     "ref": "Apocalypse 21:4",
-     "fr": "Il essuiera toute larme de leurs yeux, et la mort ne sera plus, et il n’y aura plus ni deuil, ni cri, ni douleur, car les premières choses ont disparu.",
-     "mg": "Ary hofafany ny ranomaso rehetra amin’ ny masony; ary tsy hisy fahafatesana intsony, sady tsy hisy alahelo, na fitarainana, na fanaintainana; fa efa lasa ny zavatra taloha."
-    },
-    {
-     "ref": "Psaume 147:3",
-     "fr": "Il guérit ceux qui ont le cœur brisé, Et il panse leurs blessures.",
-     "mg": "Mahasitrana ny torotoro fo Izy Sy mamehy ny feriny."
-    }
-   ]
-  },
-  {
-   "key": "solitude",
-   "label": {
-    "fr": "Solitude",
-    "mg": "Fahirano sy fanirery"
-   },
-   "verses": [
-    {
-     "ref": "Deutéronome 31:6",
-     "fr": "Fortifiez-vous et ayez du courage ! Ne craignez point et ne soyez point effrayés devant eux ; car l’Éternel, ton Dieu, marchera lui-même avec toi, il ne te délaissera point, il ne t’abandonnera point.",
-     "mg": "Mahereza sy matanjaha; aza matahotra na manahy azy; fa Jehovah Andriamanitrao no miara-mandeha aminao; tsy handao anao na hahafoy anao Izy."
-    },
-    {
-     "ref": "Hébreux 13:5",
-     "fr": "Ne vous livrez pas à l’amour de l’argent ; contentez-vous de ce que vous avez ; car Dieu lui-même a dit : Je ne te délaisserai point, et je ne t’abandonnerai point.",
-     "mg": "Aoka tsy ho amin’ ny fitiavam-bola ny toe-tsainareo, fa mianina amin’ izay anananareo; fa hoy Izy: “Izaho tsy handao anao mihitsy na hahafoy anao akory”."
-    },
-    {
-     "ref": "Psaume 68:7",
-     "fr": "Dieu donne une famille à ceux qui étaient abandonnés, Il délivre les captifs et les rend heureux ; Les rebelles seuls habitent des lieux arides.",
-     "mg": "Andriamanitra mampitoetra an-trano izay irery tena; mamoaka ny mpifatotra ho amin’ ny fanambinana Izy; fa ny maditra hitoetra amin’ ny tany karankaina."
-    }
-   ]
-  },
-  {
-   "key": "epuisement",
-   "label": {
-    "fr": "Épuisement",
-    "mg": "Fahareraham-po"
-   },
-   "verses": [
-    {
-     "ref": "Matthieu 11:28-30",
-     "fr": "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. Prenez mon joug sur vous et recevez mes instructions, car je suis doux et humble de cœur ; et vous trouverez du repos pour vos âmes. Car mon joug est doux, et mon fardeau léger.",
-     "mg": "Mankanesa atỳ amiko, ianareo rehetra izay miasa fatratra sy mavesatra entana, fa Izaho no hanome anareo fitsaharana. Ento ny ziogako, ka mianara amiko; fa malemy fanahy sady tsy miavona am-po Aho; dia hahita fitsaharana ho an’ ny fanahinareo ianareo. Fa mora ny ziogako, ary maivana ny entako."
-    },
-    {
-     "ref": "Ésaïe 40:31",
-     "fr": "Mais ceux qui se confient en l’Éternel renouvellent leur force. Ils prennent le vol comme les aigles ; Ils courent, et ne se lassent point, Ils marchent, et ne se fatiguent point.",
-     "mg": "Fa izay miandry an’ i Jehovah dia mandroso hery kosa; Elatra no hiakarany tahaka ny voromahery; Hihazakazaka izy, nefa tsy ho sasatra; Handeha izy, nefa tsy ho reraka."
-    },
-    {
-     "ref": "Psaume 23:1-4",
-     "fr": "Cantique de David. L’Éternel est mon berger : je ne manquerai de rien. Il me fait reposer dans de verts pâturages, Il me dirige près des eaux paisibles. Il restaure mon âme, Il me conduit dans les sentiers de la justice, À cause de son nom. Quand je marche dans la vallée de l’ombre de la mort, Je ne crains aucun mal, car tu es avec moi : Ta houlette et ton bâton me rassurent.",
-     "mg": "Jehovah no Mpiandry ahy, tsy hanan-java-mahory aho, Mampandry ahy amin’ ny ahi-maitso Izy; mitondra ahy eo amoron’ ny rano fialan-tsasatra Izy. Mamelombelona ny fanahiko Izy; mitarika ahy amin’ ny lalan’ ny fahamarinana noho ny anarany Izy. Eny, na dia mandeha mamaky ny lohasaha aloky ny fahafatesana aza aho, dia tsy hatahotra ny loza aho, fa Hianao no amiko; ny tsorakazonao sy ny tehinao, ireo no mahafa-tahotra ahy."
-    }
-   ]
-  },
-  {
-   "key": "argent",
-   "label": {
-    "fr": "Travail et argent",
-    "mg": "Asa sy vola"
-   },
-   "verses": [
-    {
-     "ref": "Matthieu 6:31-33",
-     "fr": "Ne vous inquiétez donc point, et ne dites pas : Que mangerons-nous ? que boirons-nous ? de quoi serons-nous vêtus ? Car toutes ces choses, ce sont les païens qui les recherchent. Votre Père céleste sait que vous en avez besoin . Cherchez premièrement le royaume et la justice de Dieu ; et toutes ces choses vous seront données par-dessus.",
-     "mg": "Dia aza manahy ianareo ka manao hoe: Inona no hohaninay? na: Inona no hosotroinay? na: Inona no hotafinay? Fa izany rehetra izany dia katsahin’ ny jentilisa fatratra; fa fantatry ny Rainareo Izay any an-danitra fa tokony ho anareo izany rehetra izany. Fa katsaho aloha ny fanjakany sy ny fahamarinany, dia hanampy ho anareo izany rehetra izany."
-    },
-    {
-     "ref": "Philippiens 4:19",
-     "fr": "Et mon Dieu pourvoira à tous vos besoins selon sa richesse, avec gloire, en Jésus-Christ.",
-     "mg": "Fa Andriamanitro hahatanteraka izay rehetra tokony ho anareo araka ny hareny amin’ ny voninahitra no amin’ i Kristy Jesosy."
-    },
-    {
-     "ref": "Proverbes 16:3",
-     "fr": "Recommande à l’Éternel tes œuvres, Et tes projets réussiront.",
-     "mg": "Ankino amin’ i Jehovah ny asanao, Dia ho lavorary izay kasainao."
-    }
-   ]
-  },
-  {
-   "key": "famille",
-   "label": {
-    "fr": "Famille et couple",
-    "mg": "Fianakaviana sy tokantrano"
-   },
-   "verses": [
-    {
-     "ref": "1 Corinthiens 13:4-7",
-     "fr": "La charité est patiente, elle est pleine de bonté ; la charité n’est point envieuse ; la charité ne se vante point, elle ne s’enfle point d’orgueil, elle ne fait rien de malhonnête, elle ne cherche point son intérêt, elle ne s’irrite point, elle ne soupçonne point le mal, elle ne se réjouit point de l’injustice, mais elle se réjouit de la vérité ; elle excuse tout, elle croit tout, elle espère tout, elle supporte tout.",
-     "mg": "Ny fitiavana mahari-po sady mora fanahy; ny fitiavana tsy mialona, tsy mirehareha, tsy mieboebo, tsy manao izay tsy mahamendrika, tsy mitady ny azy, tsy mora sosotra, tsy manao otri-po, tsy mifaly amin’ ny tsi-fahamarinana, fa miara-mifaly amin’ ny fahamarinana kosa, mandefitra ny zavatra rehetra, mino ny zavatra rehetra, manantena ny zavatra rehetra, maharitra ny zavatra rehetra."
-    },
-    {
-     "ref": "Éphésiens 4:32",
-     "fr": "Soyez bons les uns envers les autres, compatissants, vous pardonnant réciproquement, comme Dieu vous a pardonné en Christ.",
-     "mg": "ary aoka samy halemy fanahy amin’ ny namany avy ianareo, ka hifampiantra sy hifamela heloka, tahaka ny namelan’ Andriamanitra ny helokareo ao amin’ i Kristy."
-    },
-    {
-     "ref": "Colossiens 3:13",
-     "fr": "Supportez-vous les uns les autres, et, si l’un a sujet de se plaindre de l’autre, pardonnez-vous réciproquement. De même que Christ vous a pardonné, pardonnez-vous aussi.",
-     "mg": "Mifandefera, ka mifamelà heloka ianareo, raha misy manana alahelo amin’ ny sasany; tahaka ny namelan’ ny Tompo ny helokareo no aoka mba hamelanareo heloka kosa."
-    }
-   ]
-  },
-  {
-   "key": "maladie",
-   "label": {
-    "fr": "Maladie",
-    "mg": "Aretina"
-   },
-   "verses": [
-    {
-     "ref": "Psaume 103:2-3",
-     "fr": "Mon âme, bénis l’Éternel, Et n’oublie aucun de ses bienfaits ! C’est lui qui pardonne toutes tes iniquités, Qui guérit toutes tes maladies ;",
-     "mg": "Misaora an’ i Jehovah, ry fanahiko; Ary aza misy hadinoinao ny fitahiany rehetra, Izay mamela ny helokao rehetra, Izay manasitrana ny aretinao rehetra,"
-    },
-    {
-     "ref": "Jacques 5:14-15",
-     "fr": "Quelqu’un parmi vous est-il malade ? Qu’il appelle les anciens de l’Église, et que les anciens prient pour lui, en l’oignant d’huile au nom du Seigneur ; la prière de la foi sauvera le malade, et le Seigneur le relèvera ; et s’il a commis des péchés, il lui sera pardonné.",
-     "mg": "Misy marary va eo aminareo? Aoka izy hampaka ny loholon’ ny fiangonana; ary aoka hanosotra diloilo azy amin’ ny anaran’ ny Tompo ireo sady hivavaka eo aminy; ary ny fivavaky ny finoana dia hamonjy ilay marary, fa ny Tompo hanangana azy; ary raha nanota izy, dia havela ny helony."
-    },
-    {
-     "ref": "Ésaïe 53:5",
-     "fr": "Mais il était blessé pour nos péchés, Brisé pour nos iniquités ; Le châtiment qui nous donne la paix est tombé sur lui, Et c’est par ses meurtrissures que nous sommes guéris.",
-     "mg": "Nefa Izy dia voalefona noho ny fahadisoantsika sy notorotoroina noho ny helotsika, ny fampijaliana nahazoantsika fihavanana no namelezana Azy; ary ny dian-kapoka taminy no nahasitranana antsika."
-    }
-   ]
-  },
-  {
-   "key": "pardon",
-   "label": {
-    "fr": "Faute et pardon",
-    "mg": "Fahotana sy famelan-keloka"
-   },
-   "verses": [
-    {
-     "ref": "1 Jean 1:9",
-     "fr": "Si nous confessons nos péchés, il est fidèle et juste pour nous les pardonner, et pour nous purifier de toute iniquité.",
-     "mg": "Raha miaiky ny fahotantsika isika, dia mahatoky sy marina Izy ka mamela ny fahotantsika sy manadio antsika ho afaka amin’ ny tsi-fahamarinana rehetra."
-    },
-    {
-     "ref": "Psaume 103:12",
-     "fr": "Autant l’orient est éloigné de l’occident, Autant il éloigne de nous nos transgressions.",
-     "mg": "Tahaka ny halavitry ny atsinanana amin’ ny andrefana No halavitry ny anesorany ny fahotantsika amintsika."
-    },
-    {
-     "ref": "Romains 8:1",
-     "fr": "Il n’y a donc maintenant aucune condamnation pour ceux qui sont en Jésus-Christ.",
-     "mg": "Ary amin’ izany dia tsy misy fanamelohana ho an’ izay ao amin’ i Kristy Jesosy."
-    }
-   ]
-  },
-  {
-   "key": "doute",
-   "label": {
-    "fr": "Doute et foi",
-    "mg": "Fisalasalana sy finoana"
-   },
-   "verses": [
-    {
-     "ref": "Marc 9:24",
-     "fr": "Aussitôt le père de l’enfant s’écria : Je crois ! viens au secours de mon incrédulité !",
-     "mg": "Ary niaraka tamin’ izay dia niantso ny rain-drazazalahy ka nanao hoe: Mino aho; vonjeo mba ho afaka amin’ ny tsi-finoako."
-    },
-    {
-     "ref": "Hébreux 11:1",
-     "fr": "Or la foi est une ferme assurance des choses qu’on espère, une démonstration de celles qu’on ne voit pas.",
-     "mg": "Ary ny finoana no fahatokiana ny amin’ ny zavatra antenaina, fanehoana ny zavatra tsy hita."
-    },
-    {
-     "ref": "Jacques 1:5-6",
-     "fr": "Si quelqu’un d’entre vous manque de sagesse, qu’il la demande à Dieu, qui donne à tous simplement et sans reproche, et elle lui sera donnée. Mais qu’il la demande avec foi, sans douter ; car celui qui doute est semblable au flot de la mer, agité par le vent et poussé de côté et d’autre.",
-     "mg": "Ary raha misy ianareo tsy manam-pahendrena, aoka izy hangataka amin’ Andriamanitra, Izay manome malalaka ho an’ ny olona rehetra sady tsy mandatsa; ary dia homena azy izany. Nefa aoka hangataka amin’ ny finoana izy ka tsy hiahanahana akory; fa izay miahanahana dia toy ny alon-dranomasina entin’ ny rivotra ka atopatopany."
-    }
-   ]
-  },
-  {
-   "key": "colere",
-   "label": {
-    "fr": "Colère et conflit",
-    "mg": "Fahatezerana sy ady"
-   },
-   "verses": [
-    {
-     "ref": "Éphésiens 4:26",
-     "fr": "Si vous vous mettez en colère, ne péchez point ; que le soleil ne se couche pas sur votre colère,",
-     "mg": "Tezera, fa aza manota; ary aoka tsy ho tratry ny masoandro milentika ny fahatezeranareo."
-    },
-    {
-     "ref": "Proverbes 15:1",
-     "fr": "Une réponse douce calme la fureur, Mais une parole dure excite la colère.",
-     "mg": "Ny famaliana mora dia mampianina ny fahatezerana mafy; Fa ny teny maharary mahatonga fahasosorana."
-    },
-    {
-     "ref": "Jacques 1:19",
-     "fr": "Sachez-le, mes frères bien-aimés. Ainsi, que tout homme soit prompt à écouter, lent à parler, lent à se mettre en colère ;",
-     "mg": "Fantatrareo izany, sy rahalahy malalako. Kanefa aoka ny olona rehetra halady hihaino ho malai-miteny, ho malain-ko tezitra;"
-    }
-   ]
-  },
-  {
-   "key": "decision",
-   "label": {
-    "fr": "Décision et direction",
-    "mg": "Fanapahan-kevitra"
-   },
-   "verses": [
-    {
-     "ref": "Proverbes 3:5-6",
-     "fr": "Confie-toi en l’Éternel de tout ton cœur, Et ne t’appuie pas sur ta sagesse ; Reconnais-le dans toutes tes voies, Et il aplanira tes sentiers.",
-     "mg": "Matokia an’ i Jehovah amin’ ny fonao rehetra, Fa aza miankina amin’ ny fahalalanao; Maneke Azy amin’ ny alehanao rehetra, Fa Izy handamina ny lalanao,"
-    },
-    {
-     "ref": "Psaume 32:8",
-     "fr": "Je t’instruirai et te montrerai la voie que tu dois suivre ; Je te conseillerai, j’aurai le regard sur toi.",
-     "mg": "Hanome saina anao sy hampianatra anao izay lalan-kalehanao Aho; hitsinjo anao ny masoko ka hanolo-tsaina anao Aho."
-    },
-    {
-     "ref": "Jacques 1:5",
-     "fr": "Si quelqu’un d’entre vous manque de sagesse, qu’il la demande à Dieu, qui donne à tous simplement et sans reproche, et elle lui sera donnée.",
-     "mg": "Ary raha misy ianareo tsy manam-pahendrena, aoka izy hangataka amin’ Andriamanitra, Izay manome malalaka ho an’ ny olona rehetra sady tsy mandatsa; ary dia homena azy izany."
-    }
-   ]
-  },
-  {
-   "key": "gratitude",
-   "label": {
-    "fr": "Gratitude et joie",
-    "mg": "Fisaorana sy fifaliana"
-   },
-   "verses": [
-    {
-     "ref": "1 Thessaloniciens 5:16-18",
-     "fr": "Soyez toujours joyeux. Priez sans cesse. Rendez grâces en toutes choses, car c’est à votre égard la volonté de Dieu en Jésus-Christ.",
-     "mg": "Mifalia mandrakariva. Mivavaha, ka aza mitsahatra. Misaora amin’ ny zavatra rehetra; fa izany no sitrapon’ Andriamanitra ao amin’ i Kristy Jesosy ho anareo."
-    },
-    {
-     "ref": "Psaume 118:24",
-     "fr": "C’est ici la journée que l’Éternel a faite : Qu’elle soit pour nous un sujet d’allégresse et de joie !",
-     "mg": "Ity no andro nataon’ i Jehovah; Hifaly sy ho ravoravo amin’ izao isika."
-    },
-    {
-     "ref": "Néhémie 8:10",
-     "fr": "Ils leur dirent : Allez, mangez des viandes grasses et buvez des liqueurs douces, et envoyez des portions à ceux qui n’ont rien de préparé, car ce jour est consacré à notre Seigneur ; ne vous affligez pas, car la joie de l’Éternel sera votre force.",
-     "mg": "Dia hoy izy taminy: Mandehana, hano ny matavy, ary sotroy ny mamy, dia mba anatero anjara izay tsy manan-javatra voavoatra; fa masìna ho an’ ny Tompontsika ity andro ity; koa aza malahelo ianareo, fa ny fifaliana avy amin’ i Jehovah no fiarovana mafy ho anareo."
-    }
-   ]
-  }
- ]
+  ]
 }

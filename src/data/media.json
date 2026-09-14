@@ -1,0 +1,361 @@
+{
+  "note": "Chaque lien est verifie un par un avec l'API oEmbed de YouTube. Aucune chaine n'est affiliee a inme.one : ce sont des liens publics, cites avec leur chaine d'origine. scripts/check-videos.mjs revalide la liste et la CI la passe une fois par semaine.",
+  "checkedAt": "2026-09-14",
+  "streams": {
+    "toriteny": {
+      "fr": "Toriteny malgaches",
+      "mg": "Toriteny malagasy",
+      "en": "Malagasy sermons"
+    },
+    "mre": {
+      "fr": "Pasteur Jocelyn Ranjarison, MRE",
+      "mg": "Pasteur Jocelyn Ranjarison, MRE",
+      "en": "Pastor Jocelyn Ranjarison, MRE"
+    },
+    "shine": {
+      "fr": "Eglise Evangelique SHINE",
+      "mg": "Fiangonana SHINE",
+      "en": "SHINE Evangelical Church"
+    },
+    "apokalipsy": {
+      "fr": "Apokalypsy",
+      "mg": "Apokalypsy",
+      "en": "Apokalypsy"
+    },
+    "fiderana": {
+      "fr": "Louange malgache",
+      "mg": "Hira fiderana",
+      "en": "Malagasy worship"
+    },
+    "worship": {
+      "fr": "Louange internationale",
+      "mg": "Fiderana vahiny",
+      "en": "International worship"
+    }
+  },
+  "videos": [
+    {
+      "id": "jO9_mOXlbz8",
+      "title": "TORITENY ALAHADY 05 JOLAY 2026 - FJKM ISOTRY FITIAVANA",
+      "channel": "FJKM Isotry Fitiavana",
+      "stream": "toriteny",
+      "lang": "mg",
+      "themes": [
+        "doute",
+        "decision",
+        "gratitude"
+      ],
+      "why": "Une predication dominicale complete, dans le culte tel qu'il se vit."
+    },
+    {
+      "id": "MuwqfBVtqd0",
+      "title": "TORITENY ALAHADY 28 JONA 2026 , FJKM ATSIMON'IMAHAMASINA",
+      "channel": "FJKM ATSIMON'IMAHAMSINA",
+      "stream": "toriteny",
+      "lang": "mg",
+      "themes": [
+        "famille",
+        "pardon"
+      ],
+      "why": "Une autre voix, une autre paroisse, pour entendre le meme texte autrement."
+    },
+    {
+      "id": "9sJjNyxFnFE",
+      "title": "Mofonaina isan'andro anio Alakamisy 21 Mai 2026. #FJKM_Ambohitantely",
+      "channel": "FJKM Ambohitantely Fiangonana",
+      "stream": "toriteny",
+      "lang": "mg",
+      "themes": [
+        "epuisement",
+        "solitude"
+      ],
+      "why": "Un pain quotidien court, a ecouter le matin avant de partir."
+    },
+    {
+      "id": "avnU02cTaVk",
+      "title": "Famakiana Soratra Masina sy Toriteny . Pastera Joelitiana Rarivomanana  - Paska 12  Aprily  2020",
+      "channel": "FPMA Cergy",
+      "stream": "toriteny",
+      "lang": "mg",
+      "themes": [
+        "solitude",
+        "peur"
+      ],
+      "why": "Une lecture suivie du texte, puis la predication, depuis la diaspora."
+    },
+    {
+      "id": "p8L3K1aG6nM",
+      "title": "Toriteny (Mpitandrina, Ammi Irako Andriamahazosoa)",
+      "channel": "MsTsara",
+      "stream": "toriteny",
+      "lang": "mg",
+      "themes": [
+        "colere",
+        "pardon"
+      ],
+      "why": "Une parole directe sur ce que l'on garde contre l'autre."
+    },
+    {
+      "id": "SQlpf2CknC4",
+      "title": "TORITENY ALAHADY 04 AOGOSITRA 2024 - FJKM ISOTRY FITIAVANA",
+      "channel": "FJKM Isotry Fitiavana",
+      "stream": "toriteny",
+      "lang": "mg",
+      "themes": [
+        "argent",
+        "maladie"
+      ],
+      "why": "Un culte entier, pour les jours ou l'on a besoin de rester longtemps."
+    },
+    {
+      "id": "doXilVqBkfU",
+      "title": "Pasteur Jocelyn Ranjarison (Miaina indray miaraka @ Fanahy Masina N°05) - 49éme édition",
+      "channel": "Worship Moment",
+      "stream": "mre",
+      "lang": "mg",
+      "themes": [
+        "epuisement",
+        "doute"
+      ],
+      "why": "Un enseignement sur la vie renouvelee avec le Saint-Esprit."
+    },
+    {
+      "id": "ACO27ufoGt0",
+      "title": "Pasteur Jocelyn Ranjarison (Miaina indray miaraka @ Fanahy Masina N°03) - 37éme édition",
+      "channel": "Worship Moment",
+      "stream": "mre",
+      "lang": "mg",
+      "themes": [
+        "doute",
+        "decision"
+      ],
+      "why": "La suite de sa serie sur la marche quotidienne avec l'Esprit."
+    },
+    {
+      "id": "Zo_F8-vnk_M",
+      "title": "TENY SOA",
+      "channel": "MRE Webdiffusion",
+      "stream": "mre",
+      "lang": "mg",
+      "themes": [
+        "solitude",
+        "gratitude"
+      ],
+      "why": "Une parole d'encouragement courte, diffusee par son Eglise MRE."
+    },
+    {
+      "id": "zB-ZZa1mW30",
+      "title": "AZA MATAHOTRA | Bishop Patrick Andrianarivo",
+      "channel": "Eglise Shine",
+      "stream": "shine",
+      "lang": "mg",
+      "themes": [
+        "peur"
+      ],
+      "why": "Une predication entiere sur la peur, et sur ce qu'elle empeche."
+    },
+    {
+      "id": "q95Ajhsfj4Y",
+      "title": "MISY TENDRIN'ANDRIAMANITRA NY FIAINANAO | BISHOP PATRICK ANDRIANARIVO",
+      "channel": "Eglise Shine",
+      "stream": "shine",
+      "lang": "mg",
+      "themes": [
+        "decision",
+        "doute"
+      ],
+      "why": "Un message sur le dessein de Dieu pour une vie, quand la route est floue."
+    },
+    {
+      "id": "HEmiPUOIHgw",
+      "title": "Ampiasao ny finoanao | BISHOP PATRICK ANDRIANARIVO",
+      "channel": "Eglise Shine",
+      "stream": "shine",
+      "lang": "mg",
+      "themes": [
+        "doute",
+        "maladie"
+      ],
+      "why": "Un enseignement pratique sur la foi mise en mouvement."
+    },
+    {
+      "id": "a1gSCG8tLuk",
+      "title": "Apokalypsy 30 taona 08 Aogositra 2026",
+      "channel": "Toritenin'ny pasteur Mailhol",
+      "stream": "apokalipsy",
+      "lang": "mg",
+      "themes": [
+        "gratitude"
+      ],
+      "why": "Le rassemblement des trente ans de l'Eglise Apokalypsy, au stade Barea."
+    },
+    {
+      "id": "-buHcLt5gyI",
+      "title": "Toritenin'ny Pasteur MAILHOL FAM Ambohimarina 01 08 26",
+      "channel": "Toritenin'ny pasteur Mailhol",
+      "stream": "apokalipsy",
+      "lang": "mg",
+      "themes": [
+        "doute",
+        "decision"
+      ],
+      "why": "Une predication complete dans son temple d'Ambohimarina."
+    },
+    {
+      "id": "RfM6k4IBvPM",
+      "title": "Pourquoi lire L'APOCALYPSE ? | Joël Spinks | ÉPISODE 1",
+      "channel": "Joël Spinks Officiel",
+      "stream": "apokalipsy",
+      "lang": "fr",
+      "themes": [
+        "peur",
+        "doute"
+      ],
+      "why": "Une entree dans le livre de l'Apocalypse, sans sensationnalisme."
+    },
+    {
+      "id": "OS8bbt4IyMQ",
+      "title": "Atmosferan'ny Lanitra - Bodokely Ministries",
+      "channel": "Bodokely Ministries",
+      "stream": "fiderana",
+      "lang": "mg",
+      "themes": [
+        "epuisement",
+        "gratitude"
+      ],
+      "why": "Une adoration malgache qui installe le calme avant la priere."
+    },
+    {
+      "id": "IASI1buzllo",
+      "title": "Anaovy zava-baovao ny fiainako Jesosy  | Rija Rasolondraibe | Hira Fiderana Malagasy ",
+      "channel": "RATELO 🇲🇬",
+      "stream": "fiderana",
+      "lang": "mg",
+      "themes": [
+        "pardon",
+        "decision"
+      ],
+      "why": "Un cantique de renouveau tres connu a Madagascar."
+    },
+    {
+      "id": "Zt6MhHEzP0I",
+      "title": "Hira Fiderana Medley | Fiankohofana | Playlist Evangelique",
+      "channel": "Fiderana sy Vavaka ary Fampianarana",
+      "stream": "fiderana",
+      "lang": "mg",
+      "themes": [
+        "solitude",
+        "epuisement"
+      ],
+      "why": "Un long medley de louange, pour accompagner un temps de priere."
+    },
+    {
+      "id": "n0FBb6hnwTo",
+      "title": "Goodness Of God (LIVE) - Jenn Johnson | VICTORY",
+      "channel": "Bethel Music",
+      "stream": "worship",
+      "lang": "en",
+      "themes": [
+        "gratitude",
+        "deuil"
+      ],
+      "why": "Une louange intime sur la fidelite de Dieu, portee par Bethel Music."
+    },
+    {
+      "id": "f2oxGYpuLkw",
+      "title": "Praise (feat. Brandon Lake, Chris Brown & Chandler Moore) | Elevation Worship",
+      "channel": "Elevation Worship",
+      "stream": "worship",
+      "lang": "en",
+      "themes": [
+        "epuisement",
+        "doute"
+      ],
+      "why": "Un chant d'adoration franc, pour relever la foi quand tout pese."
+    },
+    {
+      "id": "q5m09rqOoxE",
+      "title": "Promises (feat. Joe L Barnes & Naomi Raine) | Maverick City Music | TRIBL",
+      "channel": "TRIBL",
+      "stream": "worship",
+      "lang": "en",
+      "themes": [
+        "doute",
+        "peur"
+      ],
+      "why": "Une meditation chantee sur les promesses que Dieu tient."
+    },
+    {
+      "id": "7IIZIPtQuW8",
+      "title": "Passion, Kristian Stanfill - God, You're So Good (Live) ft. Melodie Malone",
+      "channel": "PassionVEVO",
+      "stream": "worship",
+      "lang": "en",
+      "themes": [
+        "gratitude",
+        "solitude"
+      ],
+      "why": "Une louange collective enregistree en direct, bonne pour prier le matin."
+    }
+  ],
+  "channels": [
+    {
+      "id": "UCVq5BdULxPuMB3CxdKS5DRw",
+      "name": "FJKM Ambohitantely Fiangonana"
+    },
+    {
+      "id": "UC2wEfZvXNKK_5FmhSo9XabQ",
+      "name": "FJKM Zoara Fanantenana Ambohipo"
+    }
+  ],
+  "searches": {
+    "peur": {
+      "fr": "toriteny malagasy tahotra tebiteby fampaherezana",
+      "mg": "toriteny tahotra tebiteby"
+    },
+    "deuil": {
+      "fr": "toriteny malagasy alahelo fisaonana fampiononana",
+      "mg": "toriteny alahelo fisaonana"
+    },
+    "solitude": {
+      "fr": "toriteny malagasy fanirery Andriamanitra momba",
+      "mg": "toriteny fanirery"
+    },
+    "epuisement": {
+      "fr": "toriteny malagasy fahareraham-po fitsaharana",
+      "mg": "toriteny fahareraham-po"
+    },
+    "argent": {
+      "fr": "toriteny malagasy asa sy vola fahantrana finoana",
+      "mg": "toriteny asa sy vola"
+    },
+    "famille": {
+      "fr": "toriteny malagasy tokantrano fianakaviana fitiavana",
+      "mg": "toriteny tokantrano fianakaviana"
+    },
+    "maladie": {
+      "fr": "toriteny malagasy aretina fanasitranana vavaka",
+      "mg": "toriteny aretina fanasitranana"
+    },
+    "pardon": {
+      "fr": "toriteny malagasy famelan-keloka fibebahana",
+      "mg": "toriteny famelan-keloka"
+    },
+    "doute": {
+      "fr": "toriteny malagasy finoana fisalasalana",
+      "mg": "toriteny finoana fisalasalana"
+    },
+    "colere": {
+      "fr": "toriteny malagasy fahatezerana fihavanana ady",
+      "mg": "toriteny fahatezerana fihavanana"
+    },
+    "decision": {
+      "fr": "toriteny malagasy fitarihan'Andriamanitra fanapahan-kevitra",
+      "mg": "toriteny fitarihana fanapahan-kevitra"
+    },
+    "gratitude": {
+      "fr": "toriteny malagasy fisaorana fifaliana",
+      "mg": "toriteny fisaorana fifaliana"
+    }
+  }
+}
