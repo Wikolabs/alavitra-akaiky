@@ -1,19 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-  <!-- inme.one — Spiritual dove logo. White & gold on transparent. -->
-  <defs>
-    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F59E0B"/>
-      <stop offset="100%" stop-color="#D4A574"/>
-    </linearGradient>
-  </defs>
-  <!-- Soft halo behind the dove -->
-  <circle cx="32" cy="32" r="30" fill="url(#halo)"/>
-  <!-- Dove body + wing -->
-  <path d="M32 8 C 38 8 42 12 42 18 C 42 22 40 25 36 27 C 44 28 52 32 56 40 C 56 44 52 48 46 48 C 42 48 40 46 38 44 C 36 48 32 50 28 50 C 18 50 10 44 8 36 C 12 38 18 36 22 32 C 18 30 14 26 14 20 C 14 14 18 8 32 8 Z" fill="url(#bodyGrad)" opacity="0.92"/>
-  <!-- Eye highlight -->
-  <circle cx="40" cy="18" r="1.5" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 48 48">
+  <!-- inme.one, la porte entrouverte.
+       Embrasure : rectangle 19 x 26. Battant : parallelogramme, cotes verticaux
+       de 26, pente 4/11. Reflet : meme pente, inscrit dans l'embrasure.
+       Boite englobante 9..39 sur les deux axes, donc centree. -->
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#17315C"/>
+  <rect x="20" y="13" width="19" height="26" fill="#E3B341"/>
+  <path d="M23 17 L29 19.18 L29 37.18 L23 35 Z" fill="#FFFFFF" opacity="0.42"/>
+  <path d="M9 9 L20 13 L20 39 L9 35 Z" fill="#FFFFFF"/>
+  <path d="M20 13 L20 39" stroke="#17315C" stroke-width="1.6"/>
+  <circle cx="12.5" cy="23.3" r="1.9" fill="#17315C"/>
 </svg>
